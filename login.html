@@ -20,7 +20,7 @@
         <div class="nav-links">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="#" id="testBtn">About</a></li>
                 <li><a href="#">Contact</a></li>
                 <li><a href="#"><img id="logo" src="/assets/imgs/login.png" alt=""></a></li>
             </ul>
@@ -30,10 +30,7 @@
     <main class="test">
         <div class="container">
             <section class="content">
-                <!-- <a class="my-button" href="#login">Student</a>
-                <a class="my-button" href="#login">Poslodavac</a> -->
-                <h2>Dobrodosli</h2>
-              
+                <h2>Dobrodosli</h2>                         
             </section>
             <section class="content">
                 <form>
@@ -50,11 +47,14 @@
         </div>
 
         <div class="container">
+            
             <section class="content">
-                <!-- <a class="my-button" href="#login">Student</a>
-                <a class="my-button" href="#login">Poslodavac</a> -->
-                <h2>Dobrodosli</h2>
-
+                <h2>Registracija</h2>
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn">Student</button>
+                    <button type="button" class="toggle-btn">Poslodavac</button>
+                </div>
             </section>
             <section class="content">
                 <form>
@@ -151,5 +151,5 @@
     
 </body>
 <script>var exports = {};</script>
-<script type="module" src='main.js'></script>
+<script type="module" src='login.js'></script>
 </html>

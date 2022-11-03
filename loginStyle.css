@@ -99,6 +99,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+   
  
 }
 .container{
@@ -109,26 +110,39 @@ main{
     padding-top: 10px;
     border-radius: 15px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    
 }
 
 .container:first-child{
     grid-template-rows: 100px 230px 50px 80px;
     display: none;
+    border-left: #1F5294 solid;
+    border-top: #1F5294 solid;
     
+}
+.container:first-child.active{
+    grid-template-rows: 100px 230px 50px 100px;
+    display: grid;
+}
+.container.active{
+    display: none;
 }
 /* .container:first-child.active{
     display: flex;
 } */
 
 .container:last-child{
-    grid-template-rows: 100px 300px 50px 80px;
-    
+    grid-template-rows: 110px 290px 50px 80px;
+    border-right: #1F5294 solid;
+    border-bottom: #1F5294 solid;
 }
 
 .content{
     display: flex;
     justify-content: center;
  }
+ 
+  
 
 /*  .content:first-child{
     display: grid;
@@ -138,9 +152,13 @@ main{
    
  } */
 
+ .content:first-child{
+    display: grid;
+ 
+}
+
 .content h2{
     text-align: center;
-    padding-top: 10px;
 }
 
 .content form{
@@ -177,7 +195,39 @@ main{
     outline: none;
 }
 
+.button-box{
+    width: 100%;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
 
+#btn{
+    left: 0;
+    top: 0;
+    position:absolute;
+    width: 60%;
+    height: 100%;
+    background-color: #1F5294;
+    border-radius: 30px;
+    transition: .5s;
+}
+
+.toggle-btn{
+    padding: 12px 40px;
+    cursor: pointer;
+    background:transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
+.toggle-btn:last-child{
+    color: #333;
+}
 
 a.my-button{
     background-color: #1f5294;

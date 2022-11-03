@@ -17,8 +17,7 @@ body{
 
 
 img{ 
-    max-width: 100%;
-    
+    max-width: 100%;  
 }
 
 ul{
@@ -221,15 +220,12 @@ main .content:hover{
 }
 */
 
-
-
             /*Footer section*/
 
 footer{
     background-color: #333;
     min-height: 300px;
     text-align: left;
-
 }
 
 footer .section-container{
@@ -340,7 +336,6 @@ footer h2{
         justify-content: space-between;
         max-width: 80%;
         aspect-ratio: 16/9;
-       
     }   
 
     footer{
