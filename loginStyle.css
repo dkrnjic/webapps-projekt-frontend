@@ -258,6 +258,17 @@ a.my-button{
     margin-left: 5%;
 } 
 
+.toggleForm{
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.content:last-child{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
             /*Media section*/
 
 
