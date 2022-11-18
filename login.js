@@ -46,16 +46,18 @@ toggleRight.addEventListener('click' ,() => {
 })
 
 
-/* 
+
 loginBtn.addEventListener("click", ()=>{
     email = document.getElementById("email").value;
     password = document.getElementById("password").value;
     console.log(email + " "+ password);
 });
 
-regBtn.addEventListener("click", getInfo);
+loginBtn.addEventListener("click", getInfo);
+regBtn.addEventListener("click", postInfo);
 
 const baseUrl = "http://localhost:8080/users";
+const postUrl = "http://localhost:8080/users";
 let testH2 = document.getElementById("test");
 
 async function getInfo(e){
@@ -66,5 +68,79 @@ async function getInfo(e){
     console.log(res)
     const data = await res.json();
     testH2.textContent = data.name;
+}
+    //Post registracija
 
-} */
+let form2=[] 
+form2[0]= document.getElementsByClassName("form2")[0];
+form2[1]= document.getElementsByClassName("form2")[1];
+form2[2]= document.getElementsByClassName("form2")[2];
+
+function checkIfValid(item){
+    if(item.value==""){
+        item.style.outline = "1px solid red";
+        return
+    }
+}
+
+function isEmailValid(email) {
+    const emailRegexp = new RegExp(
+      /^[a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1}([a-zA-Z0-9][\-_\.\+\!\#\$\%\&\'\*\/\=\?\^\`\{\|]{0,1})*[a-zA-Z0-9]@[a-zA-Z0-9][-\.]{0,1}([a-zA-Z][-\.]{0,1})*[a-zA-Z0-9]\.[a-zA-Z0-9]{1,}([\.\-]{0,1}[a-zA-Z]){0,}[a-zA-Z0-9]{0,}$/i
+    )
+    return emailRegexp.test(email)
+  }
+
+  function validate_password(pass, confirm_pass) {
+    if (pass != confirm_pass) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+async function postInfo(e){
+    e.preventDefault();
+
+    for(let i=0;i<3;i++){
+        if(form2[i].value==""){
+            form2[i].style.outline = "1px solid red";
+            return;
+        }
+        form2[i].style.outline = "1px solid black";
+    }
+  
+    if(isEmailValid(form2[0].value) == false){
+        form2[0].style.outline = "1px solid red";
+        console.log("email nije validan");
+        return
+    } 
+    if(validate_password(form2[1].value,form2[2].value)==false){
+        form2[1].style.outline = "1px solid red";
+        form2[2].style.outline = "1px solid red";
+        console.log("sifre se ne poklapaju");
+        return;
+    }
+
+    //fetch POST
+    const res = await fetch(postUrl,{
+        method: 'POST',
+        headers:{
+            "Content-Type": 'application/json'
+        },
+        body:JSON.stringify({
+            email: form2[0].value,
+            password: form2[1].value
+        })
+    })
+    console.log(res)
+    if(res.status == 500){
+        alert("taj email vec postoji u bazi")
+    }
+    else{
+        console.log("uspjesno si kreirao profil");
+    }
+   
+   /*  const data = await res.json();
+    testH2.textContent = data.name; */
+
+}
