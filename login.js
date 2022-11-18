@@ -6,6 +6,10 @@ let container2 = document.getElementsByClassName('container')[1];
 let forma1= document.getElementsByClassName('forms')[0];
 let forma2= document.getElementsByClassName('forms')[1];
 
+let email,password;
+let loginBtn= document.getElementsByClassName("my-button")[0];
+let regBtn= document.getElementsByClassName("my-button")[1];
+
 toggleForm1.addEventListener('click' ,() => {
     container1.classList.toggle('active')
     container2.classList.toggle('active')
@@ -40,3 +44,27 @@ toggleRight.addEventListener('click' ,() => {
     toggleLeft.style.transition ='.5s';
     toggleRight.style.transition ='.5s';
 })
+
+
+/* 
+loginBtn.addEventListener("click", ()=>{
+    email = document.getElementById("email").value;
+    password = document.getElementById("password").value;
+    console.log(email + " "+ password);
+});
+
+regBtn.addEventListener("click", getInfo);
+
+const baseUrl = "http://localhost:8080/users";
+let testH2 = document.getElementById("test");
+
+async function getInfo(e){
+    e.preventDefault();
+    const res = await fetch(baseUrl,{
+        method: 'GET'
+    })
+    console.log(res)
+    const data = await res.json();
+    testH2.textContent = data.name;
+
+} */
