@@ -1,0 +1,271 @@
+*, *::after,*::before{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+.center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;  
+}
+
+
+
+img{ 
+    max-width: 100%;  
+}
+
+ul{
+    text-decoration: none;
+    list-style: none;
+}
+
+.wallpaper-divider {
+    padding-top: 2%;
+    text-align:center;
+    /*box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .65);*/
+
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F2F4F3;
+    color: black;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.brand-title{
+    font-size: 1.6rem;
+    margin: .5rem;
+}
+
+.nav-links ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li{
+    list-style: none;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.blockElements{
+    text-decoration: none;
+    color: black;
+    padding: 1rem;
+    display: block;
+}
+
+.nav-links li img{
+    padding: 0;
+   
+}
+
+.nav-links li:hover{
+    background-color: #CACFD6;
+}
+
+.toggleContainer{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
+
+.toggle-button{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+.testMenu{
+    position:absolute;
+    top: 3.3rem;
+    right: 0rem;
+    display: none;
+}
+.testMenu.active{
+ width: 250px;
+ height: auto;
+ display: flex;
+ background-color: #F2F4F3;
+ color: black;
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.testMenu ul{
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+ 
+}
+.testMenu li{
+    width: 100%;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    
+}
+
+
+  
+.subMenu{
+    all: unset;
+    width: 100%;
+    display: block;
+    font-size: 17px;
+    padding: 0.8rem 1rem 0.8rem 0.5rem;
+}
+
+.show{
+    display: none;
+    font-size: 17px;
+    padding: 0.8rem 1rem 0.8rem 0.5rem;
+    width: 100%;
+}
+
+.subMenu2{
+    width: 100%;
+    display: block;
+    font-size: 17px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toggle-button .bar{
+    width: 100%;
+    height: 3px;
+    background-color: black;
+    border-radius: 10px;
+}
+#profileImg{
+    height: 42px;
+    width: 42px;
+    margin-top: 7px;
+
+}
+#logout{
+    height: 20px;
+}
+
+
+                                 /*MAIN*/
+
+main{
+    background-color: #F1F1F1;
+    height: 100vh;
+    display: flex;
+
+    
+}
+.sectionMain{
+    width: 80%;
+    background-color: cyan;
+}
+
+.sectionSide{
+    width: 20%;
+    background-color: gray;
+}
+
+.container{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+
+.slider{
+    display: flex;
+    width: 100%;  
+    justify-content: center;
+    gap: 10px;
+    height: 200px;
+    background-color: blue;
+}
+
+.slider > img{
+    flex: 0 0 25%;
+    justify-content: space-between;
+    max-width: 25%;
+    aspect-ratio: 16/9;
+}   
+.slider img{
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    
+} 
+.slider img:hover{
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 3px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 3px;
+
+} 
+
+/* MEDIA */
+
+ @media (max-width: 420px){
+    .testMenu.active{
+        width: 100%;
+    }
+    .blockElements{
+        display: none;
+    }
+    .show{
+        display: flex;
+    }
+}
+    /*
+    .toggle-button{
+        display: flex;
+    }
+    
+    .nav-links{
+        display: none;
+        width: 100%;
+    }
+
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links ul{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links li{
+        text-align: center;
+    }
+
+    .nav-links li a{
+        padding: .5rem 1rem;
+    }
+
+    .nav-links.active{
+        display: flex;
+    }
+    #info{
+        font-size: 12px;   
+    }*/
+

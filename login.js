@@ -53,11 +53,12 @@ loginBtn.addEventListener("click", ()=>{
     console.log(email + " "+ password);
 });
 
-loginBtn.addEventListener("click", getInfo);
+loginBtn.addEventListener("click", Login);
 regBtn.addEventListener("click", postInfo);
 
 const baseUrl = "http://localhost:8080/users";
 const postUrl = "http://localhost:8080/users";
+const loginUrl = "http://localhost:8080/users/login";
 let testH2 = document.getElementById("test");
 
 async function getInfo(e){
@@ -75,6 +76,10 @@ let form2=[]
 form2[0]= document.getElementsByClassName("form2")[0];
 form2[1]= document.getElementsByClassName("form2")[1];
 form2[2]= document.getElementsByClassName("form2")[2];
+let form1=[] 
+form1[0]= document.getElementsByClassName("form1")[0];
+form1[1]= document.getElementsByClassName("form1")[1];
+
 
 function checkIfValid(item){
     if(item.value==""){
@@ -138,6 +143,41 @@ async function postInfo(e){
     }
     else{
         console.log("uspjesno si kreirao profil");
+    }
+   
+   /*  const data = await res.json();
+    testH2.textContent = data.name; */
+
+}
+
+async function Login(e){
+    e.preventDefault();
+    //fetch POST
+    
+    const res = await fetch(loginUrl,{
+        method: 'POST',
+        headers:{
+            "Content-Type": 'application/json'
+        },
+      
+        body:JSON.stringify({
+            email: form1[0].value,
+            password: form1[1].value
+        })
+        
+      
+      
+    })
+    console.log(res)
+    if ( res.redirected) {
+        window.location.href = res.url;
+        return;
+     }
+    if(res.status == 500){
+        alert("Kriva lozinka")
+    }
+    else{
+        console.log("uspjesna prijava");
     }
    
    /*  const data = await res.json();

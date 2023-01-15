@@ -97,7 +97,7 @@ ul{
     height: 20px;
 }
 .header{
-    background-image: url(assets/imgs/testL.jpg);
+    background-image: url(/assets/imgs/testL.jpg);
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center center;
