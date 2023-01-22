@@ -57,8 +57,9 @@ loginBtn.addEventListener("click", Login);
 regBtn.addEventListener("click", postInfo);
 
 const baseUrl = "http://localhost:8080/users";
-const postUrl = "http://localhost:8080/users";
-const loginUrl = "http://localhost:8080/users/login";
+const postUrl = "http://localhost:8080/register";
+const loginUrl = "http://localhost:8080/login";
+
 let testH2 = document.getElementById("test");
 
 async function getInfo(e){
@@ -150,26 +151,22 @@ async function postInfo(e){
 
 }
 
-async function Login(e){
+async function Login(e){//fetch POST
     e.preventDefault();
-    //fetch POST
     
     const res = await fetch(loginUrl,{
-        method: 'POST',
+        method: 'POST',credentials: 'include',
         headers:{
             "Content-Type": 'application/json'
         },
-      
         body:JSON.stringify({
             email: form1[0].value,
             password: form1[1].value
-        })
-        
-      
-      
+        })  
     })
     console.log(res)
-    if ( res.redirected) {
+    if (res.redirected) {
+        console.log(document.cookie.includes('user'));
         window.location.href = res.url;
         return;
      }
@@ -179,8 +176,54 @@ async function Login(e){
     else{
         console.log("uspjesna prijava");
     }
-   
-   /*  const data = await res.json();
-    testH2.textContent = data.name; */
-
 }
+
+    //test cookies
+    
+    function setCookie(){
+        fetch('http://localhost:8080/setcookie', {
+            method: 'GET',
+            credentials: 'include'
+            })
+            .then(response => {
+                console.log(response);
+                //response.headers.get('Set-Cookie') will give you the set-cookie value
+            } )
+            .catch(error => console.error(error));
+
+            console.log("test");
+    }
+    function getCookie(){
+        fetch('http://localhost:8080/getcookie', {
+            method: 'GET',
+            credentials: 'include'
+            })
+            .then(response => {
+                console.log(response);
+                //response.headers.get('Set-Cookie') will give you the set-cookie value
+            } )
+            .catch(error => console.error(error));
+    }
+
+    function clearCookie(){
+        fetch('http://localhost:8080/clearcookie', {
+            method: 'GET',
+            credentials: 'include'
+            })
+            .then(response => {
+                console.log(response);
+                //response.headers.get('Set-Cookie') will give you the set-cookie value
+            } )
+            .catch(error => console.error(error));
+    }
+
+    function getlocalcookie(){
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length == 2) return parts.pop().split(";").shift();
+            }
+        var myCookie = getCookie("myCookie");
+        console.log(myCookie);
+    }
+        

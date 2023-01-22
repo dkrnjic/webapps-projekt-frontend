@@ -8,6 +8,26 @@ let navbarLinks = document.getElementsByClassName('nav-links')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 let switcher = false;
 
+const isLoggedIn = document.cookie.includes('user'); 
+console.log(isLoggedIn);
+
+function getCookie(){
+    fetch('http://localhost:8080/test', {
+        method: 'GET',
+        credentials: 'include'
+        })
+        .then(response => {
+            console.log(response);
+            //response.headers.get('Set-Cookie') will give you the set-cookie value
+        } )
+        .catch(error => console.error(error));
+}
+//getCookie();
+
+// redirect the user to the login page if they are not logged in
+if (!isLoggedIn) {
+  //window.location.href = '/login.html';
+}
 /* toggleButton.addEventListener('click', function () {
     testMenu.classList.toggle('active');
     console.log("Clicked");

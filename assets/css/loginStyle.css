@@ -115,15 +115,12 @@ main{
 
 .container:first-child{
     grid-template-rows: 100px 230px 50px 80px;
-    display: none;
+    display: grid;
     border-left: #1F5294 solid;
     border-top: #1F5294 solid;
     
 }
-.container:first-child.active{
-    grid-template-rows: 100px 230px 50px 100px;
-    display: grid;
-}
+
 .container.active{
     display: none;
 }
@@ -135,6 +132,11 @@ main{
     grid-template-rows: 110px 290px 50px 80px;
     border-right: #1F5294 solid;
     border-bottom: #1F5294 solid;
+    display: none;
+}
+.container:last-child.active{
+    grid-template-rows: 100px 230px 50px 100px;
+    display: grid;
 }
 
 .content{
