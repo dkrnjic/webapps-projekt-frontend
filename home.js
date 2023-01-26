@@ -7,12 +7,32 @@ let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let navbarLinks = document.getElementsByClassName('nav-links')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 let switcher = false;
+let logoutBtn= document.getElementsByClassName("subMenu2")[0];
+logoutBtn.addEventListener("click", Logout);
 
 const isLoggedIn = document.cookie.includes('user'); 
 console.log(isLoggedIn);
 
-function getCookie(){
-    fetch('http://localhost:8080/test', {
+
+async function CheckSession(){
+    const res = await fetch('http://localhost:8080/home/check',{
+        method: 'GET',
+        credentials: 'include'     
+    })
+    if (res.redirected) {
+        console.log("Nema session");
+        window.location.href = res.url;
+        return;
+     }
+     else{
+        console.log("ostajes noice");
+    }
+}
+CheckSession();
+
+//radi
+/* function setCookie(){
+    fetch('http://localhost:8080/setcookie', {
         method: 'GET',
         credentials: 'include'
         })
@@ -21,17 +41,30 @@ function getCookie(){
             //response.headers.get('Set-Cookie') will give you the set-cookie value
         } )
         .catch(error => console.error(error));
-}
-//getCookie();
 
-// redirect the user to the login page if they are not logged in
-if (!isLoggedIn) {
-  //window.location.href = '/login.html';
+        console.log("test");
 }
-/* toggleButton.addEventListener('click', function () {
-    testMenu.classList.toggle('active');
-    console.log("Clicked");
-}); */
+setCookie(); */
+
+async function Logout(){//fetch POST
+    const res = await fetch('http://localhost:8080/home/logout',{
+        method: 'GET',
+        credentials: 'include'     
+    })
+    if (res.redirected) {
+        console.log("logout");
+        window.location.href = res.url;
+        return;
+     }
+     else{
+        alert("neki bug")
+    }
+}
+
+
+
+
+
 
 // Toggle of humburger menu
 toggleContainer.addEventListener('click', function () {

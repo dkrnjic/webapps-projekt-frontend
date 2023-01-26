@@ -58,7 +58,9 @@ regBtn.addEventListener("click", postInfo);
 
 const baseUrl = "http://localhost:8080/users";
 const postUrl = "http://localhost:8080/register";
+const authUrl = "http://localhost:8080/check";
 const loginUrl = "http://localhost:8080/login";
+Auth();
 
 let testH2 = document.getElementById("test");
 
@@ -151,6 +153,23 @@ async function postInfo(e){
 
 }
 
+async function Auth(){//fetch POST
+    const res = await fetch(authUrl,{
+        method: 'GET',
+        credentials: 'include'     
+    })
+    if (res.redirected) {
+        
+        console.log("ima session");
+        window.location.href = res.url;
+        return;
+     }
+     else{
+        console.log("ostajes noice");
+    }
+}
+
+
 async function Login(e){//fetch POST
     e.preventDefault();
     
@@ -167,6 +186,7 @@ async function Login(e){//fetch POST
     console.log(res)
     if (res.redirected) {
         console.log(document.cookie.includes('user'));
+        console.log("logged in");
         window.location.href = res.url;
         return;
      }
