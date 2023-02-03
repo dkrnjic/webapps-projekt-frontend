@@ -14,22 +14,6 @@ const isLoggedIn = document.cookie.includes('user');
 console.log(isLoggedIn);
 
 
-async function CheckSession(){
-    const res = await fetch('http://localhost:8080/home/check',{
-        method: 'GET',
-        credentials: 'include'     
-    })
-    if (res.redirected) {
-        console.log("Nema session");
-        window.location.href = res.url;
-        return;
-     }
-     else{
-        console.log("ostajes noice");
-    }
-}
-CheckSession();
-
 //radi
 /* function setCookie(){
     fetch('http://localhost:8080/setcookie', {
@@ -48,7 +32,7 @@ setCookie(); */
 
 async function Logout(){//fetch POST
     const res = await fetch('http://localhost:8080/home/logout',{
-        method: 'GET',
+        method: 'POST',
         credentials: 'include'     
     })
     if (res.redirected) {

@@ -1,10 +1,11 @@
-
 const toggleForm1 = document.getElementsByClassName('toggleForm')[0];
 const toggleForm2 = document.getElementsByClassName('toggleForm')[1];
 let container1 = document.getElementsByClassName('container')[0];
 let container2 = document.getElementsByClassName('container')[1];
 let forma1= document.getElementsByClassName('forms')[0];
 let forma2= document.getElementsByClassName('forms')[1];
+let loginEnter= document.getElementsByClassName('form1')[1];
+let registerEnter= document.getElementsByClassName('form2')[2];
 
 let email,password;
 let loginBtn= document.getElementsByClassName("my-button")[0];
@@ -23,6 +24,21 @@ toggleForm2.addEventListener('click' ,() => {
     forma1.reset();   
     forma2.reset();   
 })
+
+//enter triggers login
+loginEnter.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      loginBtn.click();
+    }
+  }); 
+
+  registerEnter.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      regBtn.click();
+    }
+  }); 
 
 //toggleSwitch
 let btn = document.getElementById('btn');
@@ -60,6 +76,7 @@ const baseUrl = "http://localhost:8080/users";
 const postUrl = "http://localhost:8080/register";
 const authUrl = "http://localhost:8080/check";
 const loginUrl = "http://localhost:8080/login";
+const cookies = "http://localhost:8080/cookies/setcookie";
 Auth();
 
 let testH2 = document.getElementById("test");
@@ -132,6 +149,7 @@ async function postInfo(e){
     //fetch POST
     const res = await fetch(postUrl,{
         method: 'POST',
+        credentials: 'include',
         headers:{
             "Content-Type": 'application/json'
         },
@@ -145,7 +163,15 @@ async function postInfo(e){
         alert("taj email vec postoji u bazi")
     }
     else{
-        console.log("uspjesno si kreirao profil");
+        //console.log("uspjesno si kreirao profil");
+        alert("Uspjesno si kreirao profil ")
+        if (res.redirected) {
+            window.location.href = res.url;
+            return;
+         }
+         else{
+            console.log("error na redirect");
+         }
     }
    
    /*  const data = await res.json();
@@ -172,7 +198,7 @@ async function Auth(){//fetch POST
 
 async function Login(e){//fetch POST
     e.preventDefault();
-    
+ 
     const res = await fetch(loginUrl,{
         method: 'POST',credentials: 'include',
         headers:{
@@ -201,7 +227,7 @@ async function Login(e){//fetch POST
     //test cookies
     
     function setCookie(){
-        fetch('http://localhost:8080/setcookie', {
+        fetch('http://localhost:8080/cookies/setcookie', {
             method: 'GET',
             credentials: 'include'
             })
@@ -214,7 +240,7 @@ async function Login(e){//fetch POST
             console.log("test");
     }
     function getCookie(){
-        fetch('http://localhost:8080/getcookie', {
+        fetch('http://localhost:8080/cookies/getcookie', {
             method: 'GET',
             credentials: 'include'
             })
@@ -226,7 +252,7 @@ async function Login(e){//fetch POST
     }
 
     function clearCookie(){
-        fetch('http://localhost:8080/clearcookie', {
+        fetch('http://localhost:8080/cookies/clearcookie', {
             method: 'GET',
             credentials: 'include'
             })

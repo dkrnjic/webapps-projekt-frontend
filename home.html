@@ -7,6 +7,37 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/home.css'>
     <link rel="shortcut icon" href="#">  
+    <!-- <script type="text/javascript">
+        function docReady(fn) {
+             // see if DOM is already available
+             if (document.readyState === "complete" || document.readyState === "interactive") {
+                 // call on next available tick
+                 setTimeout(fn, 1);
+             } else {
+                 document.addEventListener("DOMContentLoaded", fn);
+            }
+         }    
+         docReady(function() {
+             history.replaceState({}, null, "/")
+         });
+         </script> -->
+    <script>
+        async function CheckSession(){
+    const res = await fetch('http://localhost:8080/home/check',{
+        method: 'GET',
+        credentials: 'include'     
+    })
+    if (res.redirected) {
+        console.log("Nema session");
+        window.location.href = res.url;
+        return;
+     }
+     else{
+        console.log("ostajes noice");
+    }
+}
+    CheckSession();
+    </script>
 </head>
 <body>
     <nav class="navbar sticky">
