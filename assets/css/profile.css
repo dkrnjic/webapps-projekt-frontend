@@ -159,11 +159,12 @@ ul{
     border-radius: 10px;
 }
 #profileImg{
-    height: 42px;
-    width: 42px;
-    margin-top: 7px;
+  height: 42px;
+  width: 42px;
+  margin-top: 7px;
 
 }
+
 #logout{
     height: 20px;
 }
@@ -266,6 +267,48 @@ main{
   .detalji{
     width: 90%;
     font-size: 17px;
+  }
+  .info{
+
+  }
+  .infoTop{
+    display: flex;
+    justify-content: space-evenly;
+    height: 100px;
+  }
+  .elem{
+    width: 33%;
+    height: 100%;
+    font-weight: bold;
+  }
+
+  .elem:first-child{
+    margin-bottom: auto;
+    font-size: 24px;
+    text-align: left;
+
+  }
+  
+  .elem:last-child{
+    text-align: right;
+    margin-right: 10px;
+   
+  }
+  .elem2:first-child{
+    height: 70%;
+    
+  }
+  .elem2:last-child{
+    text-align: center;
+    height: 30%;
+    font-size: 24px;
+   
+  }
+  #editProfile
+  {
+    height: 42px;
+    width: 42px; 
+    margin-top: 2%;
   }
   .info h1{
     font-size: 24px;

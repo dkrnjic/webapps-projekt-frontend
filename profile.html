@@ -6,15 +6,34 @@
     <title>Moj Profil</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/profile.css'>
-
+    <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/loading.css'>
+    <link rel="shortcut icon" href="#">  
 </head>
 <body>
+
+<section class="overlay">
+<div class="center">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+</section>
+
+<section class="hiddenContent">
+
     <nav class="navbar sticky">
         <div class="brand-title">Logo</div>
        
         <div class="nav-links">
             <ul>
-                <li><a class="blockElements" href="#">Pero Peric</a></li>
+                <li><a class="blockElements" href="#"><span class="username">Username</span></a></li>
                 <li><a href="#"> <img id="profileImg" src="/assets/imgs/user.png" ></a></li>
                <!--  <li><a class="blockElements" href="login.html"><img id="logout" src="/assets/imgs/exit.png"  ></a></li> -->
                 <li>
@@ -30,7 +49,7 @@
             </ul>
             <div class="testMenu" >
                 <ul>
-                    <li><a class="show" >Petar Peric</a></li> 
+                    <li><a class="show" ><span class="username">Username</span></a></li> 
                     <li><a class="subMenu" href="home.html">Naslovna</a></li> 
                     <li><a class="subMenu" href="profile.html">Moj profil</a></li> 
                     <li><a class="subMenu" href="poslodavci.html">Poslodavci</a></li> 
@@ -57,7 +76,7 @@
                 </div>
                 <div class="containerBase"> 
                     <div class="infoContainer">
-                        <h1>Petar Peric</h1>
+                        <h1><span class="username">Username</span></h1>
                         <h4>Student</h4>
                      
                         <span>About</span>
@@ -65,11 +84,11 @@
                        
                         <ul class="contact-info">
                             <p>Email: </p>
-                            <li><a href="mailto:johndoe@example.com">johndoe@example.com</a></li>
+                            <li><a href="#"><span class="email" style="color:black;">johndoe@example.com</span></a></li>
                             <p>Phone: </p>
-                            <li>555-555-5555</li>
-                            <p>Location:</p>
-                            <li> New York, NY</li>
+                            <li><span class="phone" style="color:black;">555-555-5555</span></li>
+                            <p>Location</p>
+                            <li> <span class="location" style="color:black;">New York, NY</span></li>
                             <p>Fakultet:</p>
                             <li> Računarstvo</li>
                         </ul>
@@ -83,25 +102,43 @@
                 <div class="test"> 
                     <div class="detalji">
                         <div class="info"> 
-                            <h1 style="font-size:  28px;">Detalji</h1>
-                            <h1 class="name"  style="text-align: center;">John Doe</h1>
+                            <div class="infoTop">
+                                <div class="elem">
+                                    <div style="margin-top: 10px; ">
+                                        <span style="padding-top: 10px; font-size: 28px;">Detalji</span>
+                                    </div>
+                                   
+                                </div>
+                                <div class="elem">
+                                    <div class="elem2">
+
+                                    </div>
+                                    <div  class="elem2">
+                                        <span class="username">Username</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="elem">
+                                    <a href="/profilemaker.html"><img src="/assets/imgs/edit.png" alt="Edit profile" id="editProfile"> </a>
+                                </div>
+                            </div>
                             <p class="bio2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sociis natoque penatibus et magnis dis parturient montes nascetur. Netus et malesuada fames ac turpis egestas. Suscipit adipiscing bibendum est ultricies. Ullamcorper velit sed ullamcorper morbi tincidunt ornare. Ante in nibh mauris cursus. Sed ullamcorper morbi </p>
                         </div>
                         <div class="grid-container">
                             <div class="personal-info">
                                 <h2>Personal Information</h2>
                                 <ul class="personal-details">
-                                  <li>Date of Birth: January 1, 1980</li>
-                                  <li>Gender: Male</li>
-                                  <li>Nationality: American</li>
+                                  <li>Date of Birth: <span class="birth">January 1, 1980</span> </li>
+                                  <li>Gender: <span class="gender">Male</span></li>
+                                  <li>Nationality:<span class="nationality">American</span> </li>
                                 </ul>
                               </div>
                               <div class="contact-info">
                                 <h2>Contact Information</h2>
                                 <ul class="contact-details">
-                                  <li>Email: <a href="mailto:johndoe@example.com">johndoe@example.com</a></li>
-                                  <li>Phone: 555-555-5555</li>
-                                  <li>Location: New York, NY</li>
+                                  <li>Email: <a href="#"><span class="email">johndoe@example.com</span></a></li>
+                                  <li>Phone: <span class="phone">555-555-5555</span></li>
+                                  <li>Location: <span class="location">New York, NY</span> </li>
                                 </ul>
                               </div>
                               <div class="work-info">
@@ -116,9 +153,9 @@
                         <div class="grid-container2">      
                           <div class="skills">
                             <h2>Skills</h2>
-                            <p>
+                            <span class="skillsContent">
                                 HTML/CSS, PHP, Javascript, Java, C++.
-                            </p>
+                            </span>
                           </div>
                           <div class="social-links">
                             <h2>Social Links</h2>
@@ -139,7 +176,8 @@
         </section>
         <div class="sideContainer"> </div>
     </main>
+</section>
 </body>
 <script>var exports = {};</script>
-<script type="module" src='home.js'></script>
+<script type="module" src='profile.js'></script>
 </html> 
