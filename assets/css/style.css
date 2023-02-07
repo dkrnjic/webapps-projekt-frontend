@@ -62,7 +62,7 @@ ul{
     list-style: none;
     font-size: 20px;
     margin-right: 10px;
-   
+    
 }
 
 .nav-links li a{
@@ -70,6 +70,7 @@ ul{
     color: black;
     padding: 1rem;
     display: block;
+  
 }
 
 .nav-links li:hover{
@@ -94,7 +95,7 @@ ul{
     border-radius: 10px;
 }
 #logo{
-    height: 20px;
+    height: 19px;
 }
 .header{
     background-image: url(/assets/imgs/testL.jpg);

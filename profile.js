@@ -1,16 +1,15 @@
 "use strict";
 exports.__esModule = true;
-//let num:number=4;
-//console.log(num);
-let toggleButton = document.getElementsByClassName('toggle-button')[0];
+
+//let toggleButton = document.getElementsByClassName('toggle-button')[0];
+//let navbarLinks = document.getElementsByClassName('nav-links')[0];
+
+//Hamburger menu
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
-let navbarLinks = document.getElementsByClassName('nav-links')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
-let switcher = false;
-
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
-logoutBtn.addEventListener("click", Logout);
 
+let root = "http://localhost:8080/img/";
 
 //User info declaration
 let username= document.querySelectorAll(".username");
@@ -23,6 +22,9 @@ let birth = document.getElementsByClassName("birth")[0];
 let gender =  document.getElementsByClassName("gender")[0];
 let nationality = document.getElementsByClassName("nationality")[0]; 
 let skills = document.getElementsByClassName("skillsContent")[0]; 
+const avatar = document.getElementById('avatar');
+const avatar2 = document.getElementById('profileImg');
+
 //LOADING ANIMATION 
 let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
@@ -33,7 +35,7 @@ let  hidden= document.getElementsByClassName("hiddenContent")[0];
 }); */
 
   
-
+logoutBtn.addEventListener("click", Logout);
  
 async function CheckSession(){
     const res = await fetch('http://localhost:8080/home/check',{
@@ -62,6 +64,8 @@ async function CheckSession(){
             gender.innerText = result.data.spol;
             nationality.innerText= result.data.nacionalnost;
             skills.innerText = result.data.vjestine;
+            avatar.src= root + result.data.avatar;
+            avatar2.src = avatar.src;
             
             for (i = 0; i < email.length; i++) {
                 email[i].innerText=result.email;
@@ -100,9 +104,6 @@ async function Logout(){//fetch POST
         alert("neki bug")
     }
 }
-
-
-
 
 
 

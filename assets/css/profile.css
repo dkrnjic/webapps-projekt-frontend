@@ -158,12 +158,7 @@ ul{
     background-color: black;
     border-radius: 10px;
 }
-#profileImg{
-  height: 42px;
-  width: 42px;
-  margin-top: 7px;
 
-}
 
 #logout{
     height: 20px;
@@ -211,6 +206,25 @@ main{
   .circle-container img {
     width: 100%;
   }
+  .navCircle-holder{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 42px;
+    margin-top: 7px;
+
+}
+.navCircle-container { 
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: solid black 1px;
+    overflow: hidden;
+  }
+  .navCircle-container img {
+    width: 100%;
+  }
+  
   .containerBase{
     display: flex;
     justify-content: center;

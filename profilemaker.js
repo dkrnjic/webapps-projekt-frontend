@@ -1,12 +1,18 @@
 const postData = "http://localhost:8080/profilemaker/postdata";
 const postImg = "http://localhost:8080/profilemaker/upload";
-let submitButton= document.getElementsByClassName("my-button")[0];
-let data={ime:"",prezime:"",rodenje:"",spol:"",nacionalnost:"",lokacija:"",mob:"",profesija:"",about:"",vjestine:""};
+const root = "http://localhost:8080/img/";
+let changedImg = false;
+
+//LOADING ANIMATION 
+let overlay = document.getElementsByClassName("overlay")[0];
+let  hidden= document.getElementsByClassName("hiddenContent")[0];
+
 const radioButtons = document.querySelectorAll('input[name="gender"]');
+const submitButton= document.getElementsByClassName("my-button")[0];
+let data={ime:"",prezime:"",rodenje:"",spol:"",nacionalnost:"",lokacija:"",mob:"",profesija:"",about:"",vjestine:"",avatar:""};
 let input= document.getElementById("image_uploads");
 const preview = document.querySelector('.preview');
 const avatar = document.getElementById('avatar');
-
 const fileTypes = [
     "image/apng",
     "image/bmp",
@@ -20,6 +26,7 @@ const fileTypes = [
     "image/x-icon"
   ];
   
+  
   function validFileType(file) {
     return fileTypes.includes(file.type);
   }
@@ -32,26 +39,6 @@ const fileTypes = [
       return `${(number / 1048576).toFixed(1)} MB`;
     }
   }
-  
-   async function Test22(){
-    const res = await fetch('http://localhost:8080/home/images')
-    .then((res) => {
-      if (!res.ok) {
-        console.log("Nema avatar");
-        throw new Error(res.statusText);
-        
-      }
-      return res.blob();
-    })
-    .then((blob) => {
-      avatar.src=URL.createObjectURL(blob);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
-    }
-  
-
 
 input.addEventListener('change', updateImageDisplay);
 function updateImageDisplay() {
@@ -64,6 +51,7 @@ function updateImageDisplay() {
         if (validFileType(file)) {
             const reader = new FileReader();
             reader.addEventListener('load', () => {
+                changedImg=true;
                 avatar.src = reader.result;
               });
             reader.readAsDataURL(input.files[0]);        
@@ -75,9 +63,6 @@ function updateImageDisplay() {
   }
   
 
-//LOADING ANIMATION 
-let overlay = document.getElementsByClassName("overlay")[0];
-let  hidden= document.getElementsByClassName("hiddenContent")[0];
 
 async function CheckSession(){
     const res = await fetch('http://localhost:8080/home/check',{
@@ -89,6 +74,7 @@ async function CheckSession(){
         window.location.href = res.url;
         return;
     }
+    
     else{
         if (res.ok) {
             //let i=0;
@@ -103,6 +89,8 @@ async function CheckSession(){
             document.getElementById("profession").value = "";
             document.getElementById("about").value = result.data.about;
             document.getElementById("skills").value = result.data.vjestine;
+            avatar.src= root + result.data.avatar;
+            data.avatar = result.data.avatar;
             
             for (const radioButton of radioButtons) {
                 if (radioButton.value === result.data.spol) {
@@ -110,7 +98,6 @@ async function CheckSession(){
                 break;
                 }
             }
-
             //LOADING TRIGGER
             overlay.style.display = "none";
             hidden.classList.toggle('active');
@@ -122,7 +109,7 @@ async function CheckSession(){
 }
 
 CheckSession();
-Test22() 
+
 
 submitButton.addEventListener("click", Post);
 
@@ -160,23 +147,27 @@ async function Post(e){//fetch POST
     
     const formData = new FormData();
     formData.append('image', input.files[0]);
+
     try {
       const res = await fetch(postImg, {
         method: 'POST',
         body: formData,
       });
-
+      
       if (!res.ok) {
         throw new Error(res.statusText);
       }
-      console.log(res);
+      else{
+        data.avatar = await res.json();
+      }
+    
 
       //alert('Image uploaded successfully!');
     } catch (err) {
         console.log("nema nove slike");
       //error.textContent = err.message;
     }    
-
+    console.log(data.avatar);
     const res = await fetch(postData,{
         method: 'POST',credentials: 'include',
         headers:{
