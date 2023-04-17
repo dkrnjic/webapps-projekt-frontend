@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar sticky">
-        <div class="brand-title">Logo</div>
+        <div class="brand-title"><a href="/index.html">Logo</a></div>
         <a href="#" class="toggle-button" >
             <span class="bar"></span>
             <span class="bar"></span>
@@ -19,14 +19,21 @@
         <div class="nav-links">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#" id="testBtn">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <!-- <li><a href="#" id="testBtn">About</a></li>
+                <li><a href="#">Contact</a></li> -->
                 <li><a href="#"><img id="logo" src="/assets/imgs/login.png" alt=""></a></li>
             </ul>
         </div>
     </nav>
+    <div class="hiddenElement">
+        <div class="successLoginPanel center">
+            <h2>Uspjesna registracija!</h2>
+            <h3>Preusmjeravanje...</h3>
+        </div>
+    </div>
+
     <main class="test">
-        
+     
         <div class="container">
             <section class="content">
                 <h2 id="test">Dobrodosli</h2>                         
@@ -35,14 +42,14 @@
                 <form class="forms">
                     <input type="email" class="form1" id="email"  placeholder="Email" style="margin-bottom: 30px;">
                     <input type="password" class="form1" id="password" placeholder="Password"  style="margin-bottom: 10px;">
-                    <span><a href="#zab" id="zabor">Zaboravljena lozinka?</a></span>
+                    <!-- <span><a href="#zab" id="zabor">Zaboravljena lozinka?</a></span> -->
                 </form>
             </section>
             <section class="content">
             <a class="my-button">Login</a>   
             </section>
             <section class="content">    
-                <p><a href="#"  class="toggleForm">Nemas account?</a></p>      
+                <p><a  class="toggleForm">Nemas account?</a></p>      
             </section>   
         </div>
 
@@ -50,11 +57,11 @@
             
             <section class="content">
                 <h2>Registracija</h2>
-                <div class="button-box">
+               <!--  <div class="button-box">
                     <div id="btn"></div>
-                    <button type="button" class="toggle-btn">Student</button>
-                    <button type="button" class="toggle-btn">Poslodavac</button>
-                </div>
+                    <button type="button" class="toggle-btn" value="Student">Student</button>
+                    <button type="button" class="toggle-btn" value="Poslodavac">Poslodavac</button>
+                </div> -->
             </section>
             <section class="content">
                 <form class="forms">
@@ -69,87 +76,12 @@
             <a class="my-button" href="#" >Register</a>   
             </section>
             <section class="content">    
-                <p><a href="#" class="toggleForm">Vec imas account?</a></p>   
+                <p><a  class="toggleForm">Vec imas account?</a></p>   
             </section>   
         </div>
     </main>
 
-    <div class="wallpaper-divider" ></div>
-    
-
-    <!-- 
-    <footer>
-        <div class="section-container">
-            <section class="content">
-                <div id="info">
-                    <h2>TEKST</h2>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                          Sagittis eu volutpat odio facilisis mauris sit amet.
-                    </span>
-                </div>
-                
-            </section>
-            <section class="content"> 
-                    <ul class="poslodavci">
-                        <h3>Novi poslodavaci</h3>
-                        <li>                            
-                            <p class="footer-paragrafs">Ashley Baxter</p> 
-                        </li>
-                        <li>
-                            <p class="footer-paragrafs">Emilia Clark</p> 
-                        </li>
-                        <li>
-                            <p class="footer-paragrafs">Ayanna Princes</p> 
-                        </li>    
-                        <li>
-                            <p class="footer-paragrafs">Adriel Lucero</p> 
-                        <li>
-                            <p class="footer-paragrafs">Yesenia Lee</p>  
-                        </li>     
-                    </ul>
-            </section>
-                
-          
-            <section class="content">
-                <ul>
-                    <h3>Statistika</h3>
-                    <li>                            
-                        <span>Poslodavaca:0</span> 
-                    </li>
-                    <li>
-                        <span>Studenata:0</span> 
-                    </li>
-                    <li>
-                        <span>Obavljenih praksi:0</span> 
-                    </li>        
-                </ul>
-            </section>
-            <section class="content">
-                <ul>
-                    <h3>Kontakt</h3>
-                    <li>                            
-                        <p class="footer-paragrafs">Phone: +385 98 087 3578</p> 
-                    </li>
-                    <li>
-                        <p class="footer-paragrafs">Email: </p> 
-                    </li>
-                    <h3 style="margin-bottom:1px;">Prati nas</h3>
-                    <li>
-                        <img src="/assets/imgs/GitHub32.png" class="icons">
-                        <img src="/assets/imgs/twitter.png" class="icons">
-                    </li>                          
-                </ul>
-
-            </section>
-            
-        </div>
-  
-    </footer>
-
-    -->
-
-    
+    <div class="wallpaper-divider" ></div> 
 </body>
 <script>var exports = {};</script>
 <script type="module" src='login.js'></script>

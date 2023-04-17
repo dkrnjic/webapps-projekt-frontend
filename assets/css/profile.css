@@ -51,6 +51,11 @@ ul{
     font-size: 1.6rem;
     margin: .5rem;
 }
+.brand-title a{
+  text-decoration: none;
+  color:black;
+}
+
 
 .nav-links ul{
     margin: 0;

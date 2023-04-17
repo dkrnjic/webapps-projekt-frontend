@@ -6,6 +6,14 @@ let forma1= document.getElementsByClassName('forms')[0];
 let forma2= document.getElementsByClassName('forms')[1];
 let loginEnter= document.getElementsByClassName('form1')[1];
 let registerEnter= document.getElementsByClassName('form2')[2];
+let hiddenPanel = document.getElementsByClassName('hiddenElement')[0];
+/* let toggleBtn = document.getElementsByClassName('toggle-btn')[0]
+let toggleBtn2 = document.getElementsByClassName('toggle-btn')[1] */
+let target = "Student";
+
+/* 
+toggleBtn.addEventListener('click',()=>target=toggleBtn.value)
+toggleBtn2.addEventListener('click',()=>target=toggleBtn2.value) */
 
 let email,password;
 let loginBtn= document.getElementsByClassName("my-button")[0];
@@ -41,7 +49,7 @@ loginEnter.addEventListener("keypress", function(event) {
   }); 
 
 //toggleSwitch
-let btn = document.getElementById('btn');
+/* let btn = document.getElementById('btn');
 const toggleLeft = document.getElementsByClassName('toggle-btn')[0];
 const toggleRight = document.getElementsByClassName('toggle-btn')[1];
 
@@ -60,13 +68,13 @@ toggleRight.addEventListener('click' ,() => {
     toggleLeft.style.transition ='.5s';
     toggleRight.style.transition ='.5s';
 })
-
+ */
 
 
 loginBtn.addEventListener("click", ()=>{
     email = document.getElementById("email").value;
     password = document.getElementById("password").value;
-    console.log(email + " "+ password);
+    //console.log(email + " "+ password);
 });
 
 loginBtn.addEventListener("click", Login);
@@ -123,9 +131,11 @@ function isEmailValid(email) {
     }
 }
 
+
+
+
 async function postInfo(e){
     e.preventDefault();
-
     for(let i=0;i<3;i++){
         if(form2[i].value==""){
             form2[i].style.outline = "1px solid red";
@@ -146,6 +156,13 @@ async function postInfo(e){
         return;
     }
 
+    if (form2[1].value.length < 8 || form2[2].value.length < 8) {
+        form2[1].style.outline = "1px solid red";
+        form2[2].style.outline = "1px solid red";
+        alert("lozinka mora imati najmanje 8 znakova")
+        return;
+      }
+
     //fetch POST
     const res = await fetch(postUrl,{
         method: 'POST',
@@ -164,9 +181,9 @@ async function postInfo(e){
     }
     else{
         //console.log("uspjesno si kreirao profil");
-        alert("Uspjesno si kreirao profil ")
         if (res.redirected) {
-            window.location.href = res.url;
+            hiddenPanel.style.display = "block";
+            setTimeout(()=>window.location.href = res.url,1000);
             return;
          }
          else{
@@ -178,6 +195,9 @@ async function postInfo(e){
     testH2.textContent = data.name; */
 
 }
+
+
+
 
 async function Auth(){//fetch POST
     const res = await fetch(authUrl,{
@@ -191,14 +211,29 @@ async function Auth(){//fetch POST
         return;
      }
      else{
-        console.log("ostajes noice");
+        console.log("nema session");
     }
 }
 
 
 async function Login(e){//fetch POST
     e.preventDefault();
- 
+
+    for(let i=0;i<2;i++){
+        if(form1[i].value==""){
+            form1[i].style.outline = "1px solid red";
+            form1[i].placeholder="Ovo polje ne smije biti prazno";
+            return;
+        }
+        form1[i].style.outline = "1px solid black";
+    }
+  
+    if(isEmailValid(form1[0].value) == false){
+        form1[0].style.outline = "1px solid red";
+        alert("Neispravni email!")
+        console.log("email nije validan");
+        return
+    } 
     const res = await fetch(loginUrl,{
         method: 'POST',credentials: 'include',
         headers:{
@@ -209,18 +244,14 @@ async function Login(e){//fetch POST
             password: form1[1].value
         })  
     })
-    console.log(res)
     if (res.redirected) {
-        console.log(document.cookie.includes('user'));
+        //console.log(document.cookie.includes('user')); //jel ima cookie
         console.log("logged in");
         window.location.href = res.url;
         return;
      }
-    if(res.status == 500){
-        alert("Kriva lozinka")
-    }
     else{
-        console.log("uspjesna prijava");
+        console.log("Bad credentials");
     }
 }
 

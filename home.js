@@ -3,16 +3,19 @@ exports.__esModule = true;
 
 //let toggleButton = document.getElementsByClassName('toggle-button')[0];
 //let navbarLinks = document.getElementsByClassName('nav-links')[0];
+let root = "http://localhost:8080/img/";
 
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 let username= document.querySelectorAll(".username");
+const avatar = document.getElementById('avatar');
 
 //LOADING ANIMATION
 let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
 let  headerPanel= document.getElementsByClassName("headerContainer")[0];
+
 
 logoutBtn.addEventListener("click", Logout);
 
@@ -32,6 +35,7 @@ async function CheckSession(){
             for (var i = 0; i < username.length; i++) {
                 username[i].innerText=result.data.ime + " " + result.data.prezime;
             }
+            avatar.src= root + result.data.avatar;
             //LOADING TRIGGER
             overlay.style.display = "none";
             hidden.classList.toggle('active');
