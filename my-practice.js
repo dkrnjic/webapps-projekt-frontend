@@ -37,7 +37,7 @@ panelNo.addEventListener('click', () => {
 });
 
   
-
+  let submited = false;
   let logoutBtn= document.getElementsByClassName("subMenu2")[0];
   let naslovInput = document.getElementById('title2');
   logoutBtn.addEventListener("click", Logout);
@@ -66,7 +66,7 @@ else {
 }
 
 async function CheckSession(){
-  const res = await fetch('http://localhost:8080/home/check',{
+  const res = await fetch('http://localhost:8080/practice/check',{
       method: 'GET',
       credentials: 'include'     
   })
@@ -80,6 +80,11 @@ async function CheckSession(){
           const result = await res.json();
           for (var i = 0; i < username.length; i++) {
               username[i].innerText=result.data.ime + " " + result.data.prezime;
+              submited = result.practice;
+              if(submited=="true"){
+                button.remove();
+                button2.remove();
+              }
           }
           avatar.src= root + result.data.avatar;
           //LOADING TRIGGER
@@ -188,6 +193,7 @@ panelYes.addEventListener('click', () => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+        window.location.reload();
         // handle success response
       })
       .catch(error => {

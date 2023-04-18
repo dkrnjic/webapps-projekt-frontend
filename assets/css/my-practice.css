@@ -268,7 +268,7 @@ min-height: 100vh;
 .praksaContent2{
     width: 96%;
     margin: 10px;
-    height: 300px;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -287,6 +287,15 @@ min-height: 100vh;
     height: 85%;
     display: flex;
     justify-content: center;
+
+}
+.resto1{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 .imgSection{
     width: 20%;
@@ -295,9 +304,93 @@ min-height: 100vh;
     align-items: center;
     justify-content: center;
 }
-.imgSection img{
+.imgSection1{
+    width: 23%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    border: solid grey 1px;
 
 }
+.textIznadResto1{
+    margin-top: 20px;
+    height: 60px;
+    width: 92%;
+    font-size: 18px;
+    letter-spacing: 0.7px;
+    text-align: center;
+
+    
+}
+.contentPick ul{
+    all: unset;
+    text-decoration: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+    }
+.contentPick ul li {
+    height: 80px;
+}
+
+.contentPick ul li:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0px;
+
+}
+.contentPick ul li p{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.contentPick ul li span{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 16px;
+}
+.clickBtn1{
+	background-color:#1F5294;
+	border-radius:5px;
+	border:1px solid #1b4173;
+	display:inline-block;
+	cursor:pointer;
+	color:white;
+	font-size:17px;
+	padding:8px 8px;
+	text-decoration:none;
+    height: 40px;
+}
+
+.clickBtn1:hover {
+	background-color:#4b85d1;
+}
+.clickBtn1:active {
+	position:relative;
+	top:1px;
+}
+
+.title1{
+    color: black;
+    width: 100%;
+    height: auto;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgb(243, 228, 141);
+    font-weight: bold;
+    border-radius: 8px;
+}
+.contentPick{
+ height: auto;
+
+}
+
 .informacije{
     width: 60%;
     height: 100%;
