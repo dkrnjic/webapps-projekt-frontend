@@ -19,7 +19,8 @@ document.addEventListener('click', function handleClickOutsideBox(event) {
   }
 });
 
-
+//Hide btn ak nije odabrao
+const redirectBtn = document.getElementsByClassName("clickBtn")[0];
 
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 let naslovInput = document.getElementById('title2');
@@ -81,7 +82,10 @@ async function CheckSession(){
           statusText.innerText=result.praksa.status;
           if(result.praksa.status!="Nema"){
             holder.remove();
+          }else if(result.praksa.status="Nema"){
+            redirectBtn.remove();
           }
+
           avatar.src= root + result.data.avatar;
           //LOADING TRIGGER
           overlay.style.display = "none";
@@ -112,7 +116,7 @@ async function getPrakse() {
 
   if (res.ok) {
     const result = await res.json();
-
+    redirectBtn
     // Iterate over the first 4 items in the result array
     for (let i = 0; i < 4 && i < result.length; i++) {
       const praksa = result[i];
@@ -128,19 +132,6 @@ async function getPrakse() {
 getPrakse() 
 
 
-async function UpdateStatusPrakse(nazivPoduzeca){//fetch POST
-  console.log(nazivPoduzeca);
-  const res = await fetch('http://localhost:8080/prakse/test',{
-      method: 'POST',
-      credentials: 'include'     
-  })
-  if (res.ok) {
-    console.log("uspih");
-   }
-   else{
-      alert("neki bug")
-  }
-}
 
 let num =4;
 async function getPrakse2() {
@@ -234,8 +225,27 @@ async function getPrakse2() {
     
     odaberiA.textContent = 'Odaberi';
     odaberiA.classList.add('clickBtn1');
-    /* odaberiA.addEventListener('click',()=>{
-      UpdateStatusPrakse(nazivSpan.textContent)}) */
+    odaberiA.addEventListener('click', async()=>{
+        const res = await fetch('http://localhost:8080/praksa/test',{
+            method: 'POST',
+            credentials: 'include',
+            headers:{
+                "Content-Type": 'application/json'
+            },
+            body:JSON.stringify({
+              Naziv_poduzeca: nazivSpan.textContent
+            })
+          })
+      
+      
+      if (res.ok) {
+        console.log("uspih");
+        window.location.href = "http://localhost:5500/my-practice.html"
+      }
+      else{
+          alert("neki bug")
+      }
+    })
     liOdaberi.appendChild(odaberiA);
     ul.appendChild(liOdaberi);
 
@@ -258,6 +268,7 @@ async function getPrakse2() {
   }
   num+=4;
 }
+
 
 
 
