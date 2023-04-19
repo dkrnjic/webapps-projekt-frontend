@@ -205,24 +205,6 @@ panelYes.addEventListener('click', () => {
 
 
 let dayField= document.querySelectorAll(".day");
-
-/*   function addDay() {
-    if(numOfDays<9){
-      numOfDays++;
-    var table = document.getElementById("calendar");
-    var row = table.insertRow(-1);
-    var orderCell = row.insertCell(0);
-    var dayCell = row.insertCell(1);
-    orderCell.innerHTML = numOfDays;
-    dayCell.innerHTML = numOfDays;
-    dayCell.addEventListener("click",()=>{
-      console.log("Ocitaj dan "+ dayCell.innerText);
-      textarea.innerText = "";
-      init ();
-  })
-    dayCell.classList.add("day");
-    }
-  } */
   
 let clickedDan;
 dayField.forEach((dan, index) => {
