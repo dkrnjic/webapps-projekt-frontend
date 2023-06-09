@@ -1,0 +1,110 @@
+.hiddenProfilePanel{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    height: 80vh;
+    width: 80%;
+    background-color: azure;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 3px, rgb(209, 213, 219) 0px 0px 0px 3px inset;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 3px, rgb(209, 213, 219) 0px 0px 0px 3px inset;
+}
+
+#user-profile-panel{
+    background-color: azure;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 3px, rgb(209, 213, 219) 0px 0px 0px 3px inset;
+}
+
+
+.mainContainer{
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.leftContainer{
+    width: 25%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    padding-bottom: 50px;
+    background-color: #F2F4F3;  
+}
+
+circle-holder{
+    width: 100%;
+     display: flex;
+    justify-content: center;
+    height: 300px;
+    padding-top: 10px;
+}
+.circle-container { 
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: solid #1F5294 2px;
+    overflow: hidden;
+  }
+  .circle-container img {
+    width: 100%;
+  }
+  .navCircle-holder{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 42px;
+    margin-top: 7px;
+
+}
+.navCircle-container { 
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: solid black 1px;
+    overflow: hidden;
+  }
+  .navCircle-container img {
+    width: 100%;
+  }
+
+  
+  .containerBase{
+    display: flex;
+    justify-content: center;
+  }
+  .infoContainer{
+    padding-top: 20px;
+    font-size: 18px;
+    height: auto;
+    width: 70%; 
+  }
+
+  .infoContainer h1{
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 2px;
+    color: #1F5294;
+  }
+  .infoContainer h4{
+    
+    text-align: center;
+    margin-top: 0px;
+    color: #123a6f;
+  }
+  .infoContainer p{
+    color: #123a6f;
+    font-size: 19px;
+  }
+  .infoContainer span{
+    text-align: center;
+    color: #123a6f;
+  }
+  .infoContainer ul{
+    margin: 0;
+    padding: 0;
+  }
+
+  
+

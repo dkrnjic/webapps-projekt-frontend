@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/userprofile.css'>
+    
+
+  </head>
+  <body>
+
+    <!-- This is the form where the user will enter the username -->
+        <form id="username-form">
+            <label for="username-input">Enter username:</label>
+            <input type="text" id="username-input" name="username">
+            <button type="submit">Submit</button>
+        </form>
+        
+        <div class="hiddenProfilePanel">
+            <div id="user-profile-panel"></div>
+            <section class="mainContainer">
+                <section class="leftContainer">
+                    <div class="circle-holder">
+                        <div class="circle-container">
+                            <img id="avatar" src="/assets/imgs/profile.jpg" alt="Profile Image">
+                        </div>
+                    </div>
+                    <div class="containerBase"> 
+                        <div class="infoContainer">
+                            <h1><span class="username">Username</span></h1>
+                            <h4>Student</h4>
+                         
+                            <span>About</span>
+                            <p class="bio" style="color: black; font-size: 18px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, magna eu faucibus.</p>
+                           
+                            <ul class="contact-info">
+                                <p>Email: </p>
+                                <li><a href="#"><span class="email" style="color:black;">johndoe@example.com</span></a></li>
+                                <p>Phone: </p>
+                                <li><span class="phone" style="color:black;">555-555-5555</span></li>
+                                <p>Location</p>
+                                <li> <span class="location" style="color:black;">New York, NY</span></li>
+                                <p>Fakultet:</p>
+                                <li> Računarstvo</li>
+                            </ul>
+                        </div>
+    
+                    </div>
+                   
+                </section>
+                <section class="rightContainer">
+    
+                    <div class="test"> 
+                        <div class="detalji">
+                            <div class="info"> 
+                                <div class="infoTop">
+                                    <div class="elem">
+                                        <div style="margin-top: 10px; ">
+                                            <span style="padding-top: 10px; font-size: 28px;">Detalji</span>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="elem">
+                                        <div class="elem2">
+    
+                                        </div>
+                                        <div  class="elem2">
+                                            <span class="username">Username</span>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="elem">
+                                     <!--    <a href="/profilemaker.html"><img src="/assets/imgs/edit.png" alt="Edit profile" id="editProfile"> </a> -->
+                                    </div>
+                                </div>
+                                <p class="bio2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sociis natoque penatibus et magnis dis parturient montes nascetur. Netus et malesuada fames ac turpis egestas. Suscipit adipiscing bibendum est ultricies. Ullamcorper velit sed ullamcorper morbi tincidunt ornare. Ante in nibh mauris cursus. Sed ullamcorper morbi </p>
+                            </div>
+                            <div class="grid-container">
+                                <div class="personal-info">
+                                    <h2>Personal Information</h2>
+                                    <ul class="personal-details">
+                                      <li>Date of Birth: <span class="birth">January 1, 1980</span> </li>
+                                      <li>Gender: <span class="gender">Male</span></li>
+                                      <li>Nationality:<span class="nationality">American</span> </li>
+                                    </ul>
+                                  </div>
+                                  <div class="contact-info">
+                                    <h2>Contact Information</h2>
+                                    <ul class="contact-details">
+                                      <li>Email: <a href="#"><span class="email">johndoe@example.com</span></a></li>
+                                      <li>Phone: <span class="phone">555-555-5555</span></li>
+                                      <li>Location: <span class="location">New York, NY</span> </li>
+                                    </ul>
+                                  </div>
+                                  <div class="work-info">
+                                    <h2>Work Information</h2>
+                                    <ul class="work-details">
+                                      <li>Occupation: Software Engineer</li>
+                                      <li>Company: XYZ Inc.</li>
+                                      <li>Experience: 10 years</li>
+                                    </ul>
+                                  </div>
+                            </div>
+                            <div class="grid-container2">      
+                              <div class="skills">
+                                <h2>Skills</h2>
+                                <span class="skillsContent">
+                                    HTML/CSS, PHP, Javascript, Java, C++.
+                                </span>
+                              </div>
+                              <div class="social-links">
+                                <h2>Social Links</h2>
+                                <ul class="social-details">
+                                  <li><a href="https://twitter.com/johndoe" target="_blank">Github</a></li>
+                                  <li><a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                            
+                        </div>
+                        
+                            
+                        </div>
+                        
+                        
+                      
+                   
+                </section>
+                
+            </section>
+        </div>
+
+    <script>
+   // Get the form and the user profile panel
+const usernameForm = document.getElementById("username-form");
+const userProfilePanel = document.getElementById("user-profile-panel");
+
+// Add an event listener to the form to detect when it is submitted
+usernameForm.addEventListener("submit", event => {
+  event.preventDefault(); // Prevent the form from actually submitting
+
+  const username = usernameForm.elements.username.value.trim(); // Get the username from the form
+
+  // Send a request to the server to get the user profile data
+  fetch(`http://localhost:8080/users/userprofile/${username}`)
+    .then(response => response.json())
+    .then(data => {
+      // Create a new HTML element to display the user profile panel
+      const userProfileDiv = document.createElement("div");
+      userProfileDiv.classList.add("user-profile");
+      console.error("test");
+      // Add the user profile information to the HTML element
+      userProfileDiv.innerHTML = `
+        <h2>${data.name}</h2>
+        <p>Username: ${data.username}</p>
+        <p>Email: ${data.email}</p>
+        <p>Bio: ${data.bio}</p>
+      `;
+
+      // Add the HTML element to the user profile panel
+      userProfilePanel.innerHTML = "";
+      userProfilePanel.appendChild(userProfileDiv);
+    })
+    .catch(error => {
+      // Handle errors here
+      console.error(error);
+    });
+});
+
+
+    </script>
+  </body>
+</html>

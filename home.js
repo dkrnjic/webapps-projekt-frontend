@@ -32,6 +32,15 @@ async function CheckSession(){
      else{
         if (res.ok) {
             const result = await res.json();
+            if(result.admin){
+                let subUser = document.getElementsByClassName("subUser")[0];
+                subUser.remove();
+            }else{
+                let subAdmin = document.getElementsByClassName("subAdmin")[0];
+                let subAdmin2 = document.getElementsByClassName("subAdmin")[1];
+                subAdmin.remove();
+                subAdmin2.remove();
+            }
             for (var i = 0; i < username.length; i++) {
                 username[i].innerText=result.data.ime + " " + result.data.prezime;
             }
