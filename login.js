@@ -7,6 +7,7 @@ let forma2= document.getElementsByClassName('forms')[1];
 let loginEnter= document.getElementsByClassName('form1')[1];
 let registerEnter= document.getElementsByClassName('form2')[2];
 let hiddenPanel = document.getElementsByClassName('hiddenElement')[0];
+let origin = "http://localhost:8080/"
 /* let toggleBtn = document.getElementsByClassName('toggle-btn')[0]
 let toggleBtn2 = document.getElementsByClassName('toggle-btn')[1] */
 let target = "Student";
@@ -80,11 +81,11 @@ loginBtn.addEventListener("click", ()=>{
 loginBtn.addEventListener("click", Login);
 regBtn.addEventListener("click", postInfo);
 
-const baseUrl = "http://localhost:8080/users";
-const postUrl = "http://localhost:8080/register";
-const authUrl = "http://localhost:8080/check";
-const loginUrl = "http://localhost:8080/login";
-const cookies = "http://localhost:8080/cookies/setcookie";
+const baseUrl = origin+"users";
+const postUrl = origin+"register";
+const authUrl = origin+"check";
+const loginUrl =origin+ "login";
+const cookies = origin+"cookies/setcookie";
 Auth();
 
 let testH2 = document.getElementById("test");
@@ -258,7 +259,7 @@ async function Login(e){//fetch POST
     //test cookies
     
     function setCookie(){
-        fetch('http://localhost:8080/cookies/setcookie', {
+        fetch(origin+ 'cookies/setcookie', {
             method: 'GET',
             credentials: 'include'
             })
@@ -271,7 +272,7 @@ async function Login(e){//fetch POST
             console.log("test");
     }
     function getCookie(){
-        fetch('http://localhost:8080/cookies/getcookie', {
+        fetch(origin+ 'cookies/getcookie', {
             method: 'GET',
             credentials: 'include'
             })
@@ -283,7 +284,7 @@ async function Login(e){//fetch POST
     }
 
     function clearCookie(){
-        fetch('http://localhost:8080/cookies/clearcookie', {
+        fetch(origin+ 'cookies/clearcookie', {
             method: 'GET',
             credentials: 'include'
             })

@@ -638,8 +638,9 @@ footer h2{
 table {
     border-collapse: collapse;
     width: 100%;
+    
     margin:0 auto;
-    }
+}
     th, td {
     border: 1px solid #ddd;
     padding: 8px;
@@ -650,7 +651,9 @@ table {
 
     }
     .day {
+    width: 100%;
     cursor: pointer;
+    text-align: center;
     }
     .day:hover{
         background-color: rgb(243, 228, 141);

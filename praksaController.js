@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-
+let origin = "http://localhost:8080/"
 
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
@@ -22,7 +22,7 @@ const redirectBtn = document.getElementsByClassName("clickBtn")[0];
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 let naslovInput = document.getElementById('title2');
 logoutBtn.addEventListener("click", Logout);
-let root = "http://localhost:8080/img/";
+let root = origin+ "img/";
 let username= document.querySelectorAll(".username");
 const avatar = document.getElementById('avatar');
 let holder = document.getElementsByClassName('holder')[1];
@@ -41,7 +41,7 @@ let datumZavrsetka = document.getElementsByClassName('datumZavrsetka')[0];
 let statusText = document.getElementsByClassName('statusText')[0];
 
 async function Logout(){//fetch POST
-  const res = await fetch('http://localhost:8080/home/logout',{
+  const res = await fetch(origin+ 'home/logout',{
       method: 'POST',
       credentials: 'include'     
   })
@@ -56,7 +56,7 @@ async function Logout(){//fetch POST
 }
 
 async function CheckSession(){
-  const res = await fetch('http://localhost:8080/praksa/check',{
+  const res = await fetch(origin+ 'praksa/check',{
       method: 'GET',
       credentials: 'include'     
   })
@@ -69,7 +69,7 @@ async function CheckSession(){
       if (res.ok) {
           const result = await res.json();
           if(result.admin){
-            window.location.href ="http://localhost:5500/home.html";
+            window.location.href ="/home.html";
             return;
           }
           for (var i = 0; i < username.length; i++) {
@@ -126,7 +126,7 @@ let adresaPoduzeca = document.querySelectorAll(".adresaPoduzeca");
 let naslovPoduzeca = document.querySelectorAll(".naslovPoduzeca");
 
 async function getPrakse() {
-  const res = await fetch('http://localhost:8080/praksa', {
+  const res = await fetch(origin+ 'praksa', {
     method: 'GET',
     credentials: 'include'
   });
@@ -144,7 +144,7 @@ async function getPrakse() {
         let clickBtn1 = document.getElementsByClassName('clickBtn1')[i]
         clickBtn1.addEventListener('click', async()=>{
           console.log("rado");
-          const res = await fetch('http://localhost:8080/praksa/test',{
+          const res = await fetch(origin + 'praksa/test',{
               method: 'POST',
               credentials: 'include',
               headers:{
@@ -154,7 +154,7 @@ async function getPrakse() {
                 Naziv_poduzeca: praksa.Naziv_poduzeća
               })
             })
-            window.location.href = "http://localhost:5500/my-practice.html"
+            window.location.href = "/my-practice.html"
           });
       }
     
@@ -173,7 +173,7 @@ getPrakse()
 
 let num =4;
 async function getPrakse2() {
-  const res = await fetch('http://localhost:8080/praksa?start='+num, {
+  const res = await fetch(origin+ 'praksa?start='+num, {
     method: 'GET',
     credentials: 'include'
   });
@@ -264,7 +264,7 @@ async function getPrakse2() {
     odaberiA.textContent = 'Odaberi';
     odaberiA.classList.add('clickBtn1');
     odaberiA.addEventListener('click', async()=>{
-        const res = await fetch('http://localhost:8080/praksa/test',{
+        const res = await fetch(origin+ 'praksa/test',{
             method: 'POST',
             credentials: 'include',
             headers:{
@@ -278,7 +278,7 @@ async function getPrakse2() {
       
       if (res.ok) {
         console.log("uspih");
-        window.location.href = "http://localhost:5500/my-practice.html"
+        window.location.href = "/my-practice.html"
       }
       else{
           alert("neki bug")

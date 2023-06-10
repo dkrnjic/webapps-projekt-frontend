@@ -1,5 +1,7 @@
 "use strict";
 exports.__esModule = true;
+let origin = "http://localhost:8080/"
+
 
 //let toggleButton = document.getElementsByClassName('toggle-button')[0];
 //let navbarLinks = document.getElementsByClassName('nav-links')[0];
@@ -9,7 +11,7 @@ let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 
-let root = "http://localhost:8080/img/";
+let root =origin+ "img/";
 
 //User info declaration
 let username= document.querySelectorAll(".username");
@@ -38,7 +40,7 @@ let  hidden= document.getElementsByClassName("hiddenContent")[0];
 logoutBtn.addEventListener("click", Logout);
  
 async function CheckSession(){
-    const res = await fetch('http://localhost:8080/home/check',{
+    const res = await fetch(origin+ 'home/check',{
         method: 'GET',
         credentials: 'include'     
     })
@@ -100,7 +102,7 @@ async function CheckSession(){
  CheckSession();
 
 async function Logout(){//fetch POST
-    const res = await fetch('http://localhost:8080/home/logout',{
+    const res = await fetch(origin+ 'home/logout',{
         method: 'POST',
         credentials: 'include'     
     })

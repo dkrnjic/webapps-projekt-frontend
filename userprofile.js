@@ -1,14 +1,14 @@
 // Get the input field and the user profile panel
 const usernameInput = document.getElementById("username-input");
 const userProfilePanel = document.getElementById("user-profile-panel");
-
+let origin = "http://localhost:8080/"
 // Add an event listener to the input field to detect when the user presses the Enter key
 usernameInput.addEventListener("keydown", event => {
   if (event.key === "Enter") {
     const username = usernameInput.value.trim(); // Get the username from the input field
 
     // Send an AJAX request to the backend to get the user profile data
-    fetch(`http://localhost:8080/userprofile/${username}`)
+    fetch(origin+ `userprofile/${username}`)
       .then(response => response.json())
       .then(data => {
         // Create a new HTML element to display the user profile panel

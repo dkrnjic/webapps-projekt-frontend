@@ -1,6 +1,8 @@
-const postData = "http://localhost:8080/profilemaker/postdata";
-const postImg = "http://localhost:8080/profilemaker/upload";
-const root = "http://localhost:8080/img/";
+let origin = "http://localhost:8080/"
+
+const postData = origin+ "profilemaker/postdata";
+const postImg = origin+ "profilemaker/upload";
+const root = origin +"img/";
 let changedImg = false;
 
 //LOADING ANIMATION 
@@ -65,7 +67,7 @@ function updateImageDisplay() {
 
 
 async function CheckSession(){
-    const res = await fetch('http://localhost:8080/home/check',{
+    const res = await fetch(origin+ 'home/check',{
         method: 'GET',
         credentials: 'include'     
     })

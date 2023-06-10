@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-
+let origin = "http://localhost:8080/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
@@ -21,7 +21,7 @@ const redirectBtn = document.getElementsByClassName("clickBtn")[0];
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 let naslovInput = document.getElementById('title2');
 logoutBtn.addEventListener("click", Logout);
-let root = "http://localhost:8080/img/";
+let root = origin+ "img/";
 let username= document.querySelectorAll(".username");
 const avatar = document.getElementById('avatar');
 let holder = document.getElementsByClassName('holder')[1];
@@ -34,7 +34,7 @@ let  hidden= document.getElementsByClassName("hiddenContent")[0];
   
 
 async function Logout(){//fetch POST
-  const res = await fetch('http://localhost:8080/home/logout',{
+  const res = await fetch(origin+ 'home/logout',{
       method: 'POST',
       credentials: 'include'     
   })
@@ -49,7 +49,7 @@ async function Logout(){//fetch POST
 }
 
 async function CheckSession(){
-  const res = await fetch('http://localhost:8080/praksa/check',{
+  const res = await fetch(origin+'praksa/check',{
       method: 'GET',
       credentials: 'include'     
   })
@@ -65,7 +65,7 @@ async function CheckSession(){
             console.log("valj");
           }
           else{
-            window.location.href ="http://localhost:5500/home.html";
+            window.location.href ="/home.html";
             return;
           }
           for (var i = 0; i < username.length; i++) {
@@ -92,7 +92,7 @@ async function CheckSession(){
 CheckSession();
 
 async function getKorisnici() {
-  const res = await fetch('http://localhost:8080/users/getUsers', {
+  const res = await fetch(origin+ 'users/getUsers', {
     credentials: 'include'
   });
   if (res.ok) {
@@ -115,7 +115,7 @@ async function getKorisnici() {
         let clickBtn1 = document.getElementsByClassName('clickBtn1')[i]
         clickBtn1.addEventListener('click', async()=>{
           profileContainerFixed.style.display = "block"
-          const res = await fetch('http://localhost:8080/users/userprofile/'+korisnik._id,{
+          const res = await fetch(origin+ 'users/userprofile/'+korisnik._id,{
               method: 'GET',
               credentials: 'include'
             })
@@ -135,7 +135,6 @@ async function getKorisnici() {
                 alert("neki bug")
             }
 
-            /* window.location.href = "http://localhost:5500/korisnici.html" */
           });
       }
     
@@ -170,7 +169,7 @@ closeProfileInfo.addEventListener('click',()=>{
 
 let num =4;
 async function getKorisnici2() {
-  const res = await fetch('http://localhost:8080/users/getUsers?start='+num, {
+  const res = await fetch(origin+ 'users/getUsers?start='+num, {
     method: 'GET',
     credentials: 'include'
   });
@@ -226,7 +225,7 @@ async function getKorisnici2() {
     odaberiA.addEventListener('click', async()=>{
       profileContainerFixed.style.display = "block"
       /* console.log(result[0]._id); */
-      const res = await fetch('http://localhost:8080/users/userprofile/'+result[i]._id,{
+      const res = await fetch(origin + 'users/userprofile/'+result[i]._id,{
           method: 'GET',
           credentials: 'include'
         })
@@ -245,7 +244,6 @@ async function getKorisnici2() {
             alert("neki bug")
         }
 
-        /* window.location.href = "http://localhost:5500/korisnici.html" */
       });
    
     liOdaberi.appendChild(odaberiA);

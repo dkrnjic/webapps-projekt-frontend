@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+let origin = "http://localhost:8080/"
 //let num:number=4;
 //console.log(num);
 var toggleButton = document.getElementsByClassName('toggle-button')[0];
@@ -13,7 +14,7 @@ console.log("test");
 
 const userId = window.location.pathname.split("/")[2]; // assume the URL is /user/user1
 
-fetch(`http://localhost:8080/user/${userId}`)
+fetch(origin+ `user/${userId}`)
   .then(response => {
     if (!response.ok) {
       throw new Error("Failed to fetch user profile data");

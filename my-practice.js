@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+let origin = "http://localhost:8080/"
 
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
@@ -41,7 +42,7 @@ panelNo.addEventListener('click', () => {
   let logoutBtn= document.getElementsByClassName("subMenu2")[0];
   let naslovInput = document.getElementById('title2');
   logoutBtn.addEventListener("click", Logout);
-  let root = "http://localhost:8080/img/";
+  let root = origin+ "img/";
   let username= document.querySelectorAll(".username");
   const avatar = document.getElementById('avatar');
 
@@ -66,7 +67,7 @@ else {
 }
 
 async function CheckSession(){
-  const res = await fetch('http://localhost:8080/practice/check',{
+  const res = await fetch(origin + 'practice/check',{
       method: 'GET',
       credentials: 'include'     
   })
@@ -100,7 +101,7 @@ async function CheckSession(){
 CheckSession();
 
 async function Logout(){//fetch POST
-    const res = await fetch('http://localhost:8080/home/logout',{
+    const res = await fetch(origin+ 'home/logout',{
         method: 'POST',
         credentials: 'include'     
     })
@@ -151,7 +152,7 @@ button.addEventListener("click", ()=>{
   //  post request na server
   
 
-fetch('http://localhost:8080/practice', {
+fetch(origin+ 'practice', {
   method: 'POST',
   credentials: 'include',
   headers: {
@@ -182,7 +183,7 @@ panelYes.addEventListener('click', () => {
     overlay2.style.display = 'none';
     button.setAttribute("disabled", "disabled");
     button2.setAttribute("disabled", "disabled");
-    fetch('http://localhost:8080/practice/predaj', {
+    fetch(origin+ 'practice/predaj', {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -237,7 +238,7 @@ dan.addEventListener('click', () => {
 
 
 async function getTextarea(day){
-  const res = await fetch('http://localhost:8080/practice/'+day,{
+  const res = await fetch(origin+ 'practice/'+day,{
       method: 'GET',
       credentials: 'include'     
   })

@@ -1,5 +1,6 @@
 "use strict";
 exports.__esModule = true;
+let origin = "http://localhost:8080/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
@@ -20,7 +21,7 @@ const redirectBtn = document.getElementsByClassName("clickBtn")[0];
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 let naslovInput = document.getElementById('title2');
 logoutBtn.addEventListener("click", Logout);
-let root = "http://localhost:8080/img/";
+let root = origin +"img/";
 let username= document.querySelectorAll(".username");
 const avatar = document.getElementById('avatar');
 let holder = document.getElementsByClassName('holder')[1];
@@ -50,7 +51,7 @@ let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
 
 async function Logout(){//fetch POST
-  const res = await fetch('http://localhost:8080/home/logout',{
+  const res = await fetch(origin+ 'home/logout',{
       method: 'POST',
       credentials: 'include'     
   })
@@ -65,7 +66,7 @@ async function Logout(){//fetch POST
 }
 
 async function CheckSession(){
-  const res = await fetch('http://localhost:8080/praksa/checkAdmin',{
+  const res = await fetch(origin+ 'praksa/checkAdmin',{
       method: 'GET',
       credentials: 'include'     
   })
@@ -81,7 +82,7 @@ async function CheckSession(){
             overlay.style.display = "none";
             hidden.classList.toggle('active');
           }else{
-            window.location.href ="http://localhost:5500/home.html";
+            window.location.href ="/home.html";
             return;
           }
           for (var i = 0; i < username.length; i++) {
@@ -113,7 +114,7 @@ buttonReject.addEventListener('click',RejectPractice)
 /* Dohvati prve 4 prakse */
 async function getPrakse() {
   try {
-    const res = await fetch('http://localhost:8080/praksa/prakseAdmin', {
+    const res = await fetch(origin+ 'praksa/prakseAdmin', {
       method: 'GET',
       credentials: 'include'
     });
@@ -134,7 +135,7 @@ getPrakse()
 async function RejectPractice() {
   try {
     let commentText = document.getElementsByClassName('commentText')[0];
-    const res = await fetch('http://localhost:8080/praksa/reject', {
+    const res = await fetch(origin+ 'praksa/reject', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -152,7 +153,7 @@ async function RejectPractice() {
       alert("uspjeh")
       oPraksi.style.display= "none"
       hidden.classList.toggle('active');
-      window.location.href ="http://localhost:5500/prakse.html";
+      window.location.href ="/prakse.html";
     } 
   } catch (error) {
     console.log(error);
@@ -163,7 +164,7 @@ async function RejectPractice() {
 async function AcceptPractice() {
   try {
     let commentText = document.getElementsByClassName('commentText')[0];
-    const res = await fetch('http://localhost:8080/praksa/accept', {
+    const res = await fetch(origin+ 'praksa/accept', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -180,7 +181,7 @@ async function AcceptPractice() {
       alert("uspjeh")
       oPraksi.style.display= "none"
       hidden.classList.toggle('active');
-      window.location.href ="http://localhost:5500/prakse.html";
+      window.location.href ="/prakse.html";
     } 
   } catch (error) {
     console.log(error);
@@ -190,7 +191,7 @@ async function AcceptPractice() {
 /* Ocitaj sljedece cetiri prakse sa buttonom */
 let num =4;
 async function getPrakse2() {
-  const res = await fetch('http://localhost:8080/praksa/prakseAdmin?start='+num, {
+  const res = await fetch(origin+ 'praksa/prakseAdmin?start='+num, {
     method: 'GET',
     credentials: 'include'
   });

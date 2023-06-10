@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-
+let origin = "http://localhost:8080/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
@@ -18,7 +18,7 @@ document.addEventListener('click', function handleClickOutsideBox(event) {
 //Hide btn ak nije odabrao
 let logoutBtn= document.getElementsByClassName("subMenu2")[0];
 logoutBtn.addEventListener("click", Logout);
-let root = "http://localhost:8080/img/";
+let root = origin+"img/";
 let username= document.querySelectorAll(".username");
 const avatar = document.getElementById('avatar');
 
@@ -50,7 +50,7 @@ kreirajBtn.addEventListener('click', () => {
   };
 
   // Send a POST request to the backend endpoint
-  fetch('http://localhost:8080/praksa/add', {
+  fetch(origin+'praksa/add', {
     method: 'POST',
     credentials: 'include',
     headers: {
@@ -62,7 +62,7 @@ kreirajBtn.addEventListener('click', () => {
       if (response.ok) {
         console.log('Praksa successfully added');
         alert("Praksa dodana ")
-        window.location.href = "http://localhost:5500/dodavanjePrakse.html"
+        window.location.href = "/dodavanjePrakse.html"
       } else {
         console.log('Failed to add praksa');
       }
@@ -75,7 +75,7 @@ kreirajBtn.addEventListener('click', () => {
 
 
 async function Logout(){//fetch POST
-  const res = await fetch('http://localhost:8080/home/logout',{
+  const res = await fetch(origin + 'home/logout',{
       method: 'POST',
       credentials: 'include'     
   })
@@ -90,7 +90,7 @@ async function Logout(){//fetch POST
 }
 
 async function CheckSession(){
-  const res = await fetch('http://localhost:8080/praksa/check',{
+  const res = await fetch(origin+'praksa/check',{
       method: 'GET',
       credentials: 'include'     
   })
@@ -105,7 +105,7 @@ async function CheckSession(){
           if(result.admin){
           }
           else{
-            window.location.href ="http://localhost:5500/home.html";
+            window.location.href ="/home.html";
             return;
           }
           for (var i = 0; i < username.length; i++) {
