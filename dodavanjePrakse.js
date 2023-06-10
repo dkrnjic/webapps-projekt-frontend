@@ -52,6 +52,7 @@ kreirajBtn.addEventListener('click', () => {
   // Send a POST request to the backend endpoint
   fetch('http://localhost:8080/praksa/add', {
     method: 'POST',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json'
     },

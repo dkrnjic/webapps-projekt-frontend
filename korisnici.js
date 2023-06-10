@@ -32,12 +32,6 @@ let commentPlace = document.getElementsByClassName('commentPlace')[0]
 let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
   
-//status prakse
-let nazivPoslodavca = document.getElementsByClassName('nazivPoslodavca')[0];
-let imeMentora = document.getElementsByClassName('imeMentora')[0];
-let datumPocetka = document.getElementsByClassName('datumPocetka')[0];
-let datumZavrsetka = document.getElementsByClassName('datumZavrsetka')[0];
-let statusText = document.getElementsByClassName('statusText')[0];
 
 async function Logout(){//fetch POST
   const res = await fetch('http://localhost:8080/home/logout',{
