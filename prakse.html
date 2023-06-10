@@ -33,36 +33,36 @@
                 <div class="praksaContainer2">
                     <div class="closeContainer"><h4>X</h4></div>
                     
-                    <div class="textOpraksi">
-                        <h3>Student:</h3> 
+                    <div class="textOpraksi3">
+                        <h3>Student: <span class="nameOfStudent">user </span></h3>
                      
                     </div>
                     <div class="changeContainer">
-                        <h4>
+                        <h4 class="nextPage">
                             1
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             2
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             3
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             4
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             5
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             6
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             7
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             8
                         </h4>
-                        <h4>
+                        <h4 class="nextPage">
                             9
                         </h4>
                     </div>
@@ -71,15 +71,18 @@
                         <form id="paper" method="get" action="">
                     
                             <div class="margin">Naslov: <input id="title2" type="text" name="title"></div>
-                            <textarea readonly class="text" name="text" rows="4">
+                            <textarea readonly class="text textareaText" name="text" rows="4">
                                
                             </textarea>  
                             <br>
                             <div class="comment">
                                 <h3>Komentar:</h3>
-                                <textarea placeholder="Upišite komentar za ovu praksu"></textarea>
+                                <textarea class="commentText" placeholder="Upišite komentar za ovu praksu"></textarea>
                             </div>
-                            <div id="centerBtnUredi"> <a  class="clickBtn" id="button">Odobri</a><a  class="clickBtn" id="button">Odbaci</a></div>
+                            <div style="display: flex; justify-content: center; width: 100%;">
+                                <span id="uid"></span>
+                            </div>
+                            <div id="centerBtnUredi"> <a  class="clickBtn" id="buttonAccept">Odobri</a><a  class="clickBtn" id="buttonReject">Odbaci</a></div>
                            
                         </form>
                     
@@ -124,7 +127,6 @@
                     <li><a class="subMenu" href="home.html">Naslovna</a></li> 
                     <li><a class="subMenu" href="profile.html">Moj profil</a></li> 
                     <li><a class="subMenu subAdmin" href="korisnici.html">Korisnici</a></li> 
-                    <li><a class="subMenu" href="poruke.html">Poruke</a></li> 
                     <li><a class="subMenu2"><img id="logout" src="/assets/imgs/exit.png"  ></a></li> 
                 </ul>
                 
@@ -141,13 +143,25 @@
     <main>
          <section class="side"></section>
          <section class="mainContainer">
-            <div class="praksaContainer">
+            <div class="sticky2">
                 <div class="textOpraksi">
                     <h3>Završene prakse, potrebno potvrditi!</h3>
                 </div>
+                <div class="textOpraksi1">
+                    <button class="stanjeBtns">Odobrene</button >
+                    <button class="stanjeBtns">Čeka odobrenje</button>
+                    <button class="stanjeBtns">Ne odobrene</button>
+                </div>
+                <div class="textOpraksi">
+                    
+                </div>
+            </div>
+           
+            <div class="praksaContainer">
+              
             </div>
             <div class="loadMoreDiv">
-                <a  class="clickBtn2">Učitaj još..</a>
+               <!--  <a  class="clickBtn2">Učitaj još..</a> -->
               </div>
                 
          </section>

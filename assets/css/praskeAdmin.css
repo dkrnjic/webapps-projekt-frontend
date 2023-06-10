@@ -42,6 +42,15 @@ ul{
     width: 100%;
 }
 
+.sticky2 {
+    position: fixed;
+    background: #e1e1e1;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -210,16 +219,16 @@ main{
 }
 .mainContainer{
 background-color: #F2F4F3;
-width: 100%;
-height: auto;
+width: 90%;
+margin-top: 15px;
 display: flex;
-justify-content: center;
+position: relative;
 flex-direction: column;
 
 }
 .side{
 background-color: #F2F4F3;
-width: 10%;
+width: 5%;
 height: auto;
 min-height: 100vh;
 
@@ -227,18 +236,32 @@ min-height: 100vh;
 .praksaContainer{
     height: auto;
     width: 100%;
+    margin-top: 120px;
     background-color: #F2F4F3;
-    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
     border-radius: 4px; 
     display: flex;
     flex-direction: column;
     align-items: center;
+  
 }
 .textOpraksi{
-    width: 100%;
+    width: 33%;
     height: 100px;
     display: flex;
     align-items: center;
+}
+.textOpraksi3{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.textOpraksi3 h3{
+    margin-left: 20px;
+    font-size: 20px;
+    background-color: rgb(243, 228, 141);
+    padding: 10px 30px;
 }
 .textOpraksi h3{
     margin-left: 20px;
@@ -253,7 +276,7 @@ min-height: 100vh;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-   
+
 }
 .praksaContent{
     width: 96%;
@@ -810,6 +833,7 @@ table {
     height: 100px;
     align-items: center;
     width: 100%;
+   
 }
 
 .oPraksiContainer{
@@ -877,10 +901,7 @@ table {
     border-radius: 5px;
     border: 1px solid gray;
 }
-.changeContainer h4:first-child{
-    background-color:wheat;
-    color: #000;
-}
+
 .praksaContainer2 h4:hover{
     background-color: #4b85d1;
 }
@@ -919,4 +940,30 @@ table {
     font-size: 18px;
     letter-spacing: 0.3px;
     padding: 10px;
+}
+
+.stanjeBtns{
+    padding: 10px 20px;
+    margin: 5px;
+    color: white;
+    background-color:#1F5294;
+	border-radius:5px;
+	border:1px solid #1b4173;
+	display:inline-block;
+	cursor:pointer;
+	font-size:17px;
+	text-decoration:none;
+    text-align: center;
+}
+
+.stanjeBtns:hover {
+	background-color:#4b85d1;
+}
+
+.textOpraksi1{
+    width: 33%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
 }

@@ -26,6 +26,8 @@ let root = "http://localhost:8080/img/";
 let username= document.querySelectorAll(".username");
 const avatar = document.getElementById('avatar');
 let holder = document.getElementsByClassName('holder')[1];
+let praksaContent = document.getElementsByClassName('praksaContent')[0];
+let commentPlace = document.getElementsByClassName('commentPlace')[0]
 
 //LOADING ANIMATION
 let overlay = document.getElementsByClassName("overlay")[0];
@@ -79,9 +81,25 @@ async function CheckSession(){
           datumPocetka.innerText=result.praksa.Datum_pocetka;
           datumZavrsetka.innerText=result.praksa.Datum_zavrsetka;
           statusText.innerText=result.praksa.status;
-          if(result.praksa.status!="Nema"){
+          
+      
+          if(result.praksa.status!="Nema" && result.status=="Pending"){
+             holder.remove();
+          }else if(result.praksa.status!="Nema" && result.status=="Rejected"){
+            statusText.innerText=result.status;
+            praksaContent.style.border= "0.3px rgba(128, 0, 0, 1) solid";
+            praksaContent.style.backgroundColor= "rgba(255, 0, 0, 0.1)"; 
+            commentPlace.innerText = result.comment;
             holder.remove();
-          }else if(result.praksa.status="Nema"){
+          }
+          else if(result.praksa.status!="Nema" && result.status=="Approved"){
+              statusText.innerText=result.status;
+              praksaContent.style.backgroundColor= "rgba(0, 255, 0, 0.1)";
+              praksaContent.style.border= "0.3px rgba(0, 128, 0, 1) solid";
+              commentPlace.innerText = result.comment;
+              holder.remove();
+          }
+          else if(result.praksa.status="Nema"){
             redirectBtn.remove();
           }
 

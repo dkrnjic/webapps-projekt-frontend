@@ -142,7 +142,7 @@ button.addEventListener("click", ()=>{
       textarea.removeAttribute('readonly')
       text.style.border= "solid #1F5294 2px";
       text.style.boxShadow=" 0px 2px 2px #1F5294";
-      button.innerText ="Dosta";
+      button.innerText ="Završi";
   } 
   else {
   textarea.setAttribute('readonly', 'readonly');
