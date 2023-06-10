@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Naslovna</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/my-practice.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/dodavanjePrakse.css'>
       <link rel='stylesheet' type='text/css' media='screen' href='/assets/css/loading.css'> 
     <link rel="shortcut icon" href="#">  
 </head>
@@ -56,9 +56,9 @@
                     <li><a class="subMenu" href="home.html">Naslovna</a></li> 
                     <li><a class="subMenu" href="profile.html">Moj profil</a></li> 
                     <!-- <li><a class="subMenu" href="poslodavci.html">Poslodavci</a></li>  -->
-                    <li><a class="subMenu subUser" href="my-practice.html">Moja praksa</a></li> 
-                   
-                   <li><a class="subMenu2"><img id="logout" src="/assets/imgs/exit.png"  ></a></li> 
+                    <li><a class="subMenu subAdmin" href="prakse.html">Sve prakse</a></li> 
+                    <li><a class="subMenu" href="prakse.html">Poruke</a></li> 
+                    <li><a class="subMenu2"><img id="logout" src="/assets/imgs/exit.png"  ></a></li> 
                 </ul>
                 
             </div>
@@ -72,112 +72,40 @@
     <div class="wallpaper-divider" ></div>
     
     <main>
-         <section class="side">d</section>
-         <section class="mainContainer">a
+         <section class="side"></section>
+         <section class="mainContainer">
             <div class="praksaContainer">
-                <div class="textOpraksi">
-                    <h3>Podaci o praksi</h3>
-                </div>
-                
-                <div class="holder" >
-                    <div class="praksaContent">
-                        <div class="title">
-                            <h4>Strucni studij Ime</h4>
-                        </div>
-                        <div class="resto">
-                                <div class="imgSection"> 
-                                    <img src="/assets/imgs/imgPlaceholder.png">
-                                </div>
-                                <div class="informacije"> 
-                                    <ul>
-                                        <li>Naziv poslodavca:  <span class="nazivPoslodavca">/</span> </li>
-                                        <li>Ime i prezime Mentora: <span class="imeMentora">Petar Peric</span></li>
-                                        <li>Datum početka prakse: <span class="datumPocetka">/</span></li>
-                                        <li>Datum završetka prakse:<span class="datumZavrsetka">/</span></li>
-                                        <li>Komentar Mentora:  <span class="commentPlace">/</span></li>
-                                    </ul>
-                                </div>
-                                <div class="status">
-                                    <ul>
-                                        <li><h2 class="statusText">Nema</h2> </li>
-                                        <li><span>status prakse</span></li>
-                                        <li><a href="/my-practice/1.html" class="clickBtn">Piši stručnu praksu</a></li>
-                                    </ul>   
-                                </div>
-                        </div>
-                    </div>
-                </div>
-                
-
+               
                 <div class="holder">
                     <div class="praksaContent2">
-                        <div class="title">
-                            <h4>Odaberi praksu</h4>
-                        </div>
-                        <div class="textIznadResto1"><p id="iznadResto1Paragraph">PARTNERI STRUČNE PRAKSE - FAKULTET EKONOMIJE I TURIZMA "DR. MIJO MIRKOVIĆ"</p></div>
+                      
+                        <div class="textIznadResto1"><p id="iznadResto1Paragraph">Dodavanje prakse u sustav</p></div>
                         <div class="resto1">
-                            
                             <div class="imgSection1"> 
-                                <div class="title1"><p class="naslovPoduzeca">Naslov</p></div>
+                                <div class="title1"><p class="naslovPoduzeca"><input value=""> </p></div>
                                 <img src="/assets/imgs/italija.jpg">
                                 <div class="contentPick">
                                     <ul>
-                                        <li><p>Naziv poduzeća: </p><span  class="nazivPoduzeca">Lorem</span> </li>
-                                        <li><p>Adresa: </p><span  class="adresaPoduzeca">Lorem</span></li>
-                                        <li><p>Kontakt: </p><span class="kontaktPoduzeca">Lorem</span></li>
-                                        <li><a class="clickBtn1">Odaberi</a></li>
+                                        <li><p>Naziv poduzeća: </p><input value=""> </li>
+                                        <li><p>Adresa: </p><input value=""></li>
+                                        <li><p>Kontakt: </p><input value=""></li>
+                                        <li><a class="clickBtn1">Kreiraj</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="imgSection1"> 
-                                <div class="title1"><p class="naslovPoduzeca">Naslov</p></div>
-                                <img src="/assets/imgs/spanj.png">
-                                <div class="contentPick">
-                                    <ul>
-                                        <li><p>Naziv poduzeća: </p><span  class="nazivPoduzeca">Hrvatski muzej turizma Opatija</span> </li>
-                                        <li><p>Adresa: </p><span class="adresaPoduzeca">Park Angiolina 1, 51410, Opatija</span></li>
-                                        <li><p>Kontakt: </p><span class="kontaktPoduzeca">mirjana.kos@hrmt.hr</span></li>
-                                        <li><a class="clickBtn1">Odaberi</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="imgSection1"> 
-                                <div class="title1"><p class="naslovPoduzeca">Naslov</p></div>
-                                <img src="/assets/imgs/malta2.png">
-                                <div class="contentPick">
-                                    <ul>
-                                        <li><p>Naziv poduzeća: </p><span  class="nazivPoduzeca">Turistička zajednica Grada Kutjeva</span> </li>
-                                        <li><p>Adresa: </p><span class="adresaPoduzeca">Trg Graševine 1, 34 340 Kutjevo</span></li>
-                                        <li><p>Kontakt: </p><span class="kontaktPoduzeca">tz@kutjevo.hr</span></li>
-                                        <li><a  class="clickBtn1">Odaberi</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="imgSection1"> 
-                                <div class="title1"><p class="naslovPoduzeca">Naslov</p></div>
-                                <img src="/assets/imgs/uk.png">
-                                <div class="contentPick">
-                                    <ul>
-                                        <li><p>Naziv poduzeća: </p><span  class="nazivPoduzeca">Annular Beta d.o.o. Zagreb</span> </li>
-                                        <li><p>Adresa: </p><span class="adresaPoduzeca">Čičkovina 24 A, 10 000 Zagreb</span></li>
-                                        <li><p>Kontakt: </p><span class="kontaktPoduzeca">Tina Mučnjak, Tina.Mucnjak@mstart.hr</span></li>
-                                        <li><a  class="clickBtn1">Odaberi</a></li>
-                                    </ul>
-                                </div>
-                            </div> 
                         </div>
                         <div class="wallpaper-divider" ></div>
                        
                     </div>
                     <div class="wallpaper-divider" ></div>
 
-                     <a  class="clickBtn2">Učitaj još..</a>
+             
                     
             
                 </div>
             </div>
          </section>
-         <section class="side">s</section>    
+         <section class="side"></section>    
     </main>
 
     <div class="wallpaper-divider" ></div>
@@ -254,5 +182,5 @@
 </body>
 <script>var exports = {};</script>
 <!-- <script type="module" src='my-practice.js'></script>  -->
-<script type="module" src='praksaController.js'></script> 
+<script type="module" src='dodavanjePrakse.js'></script> 
 </html>
