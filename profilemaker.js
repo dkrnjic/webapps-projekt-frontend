@@ -1,4 +1,4 @@
-let origin = "http://localhost:8080/"
+let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
 
 const postData = origin+ "profilemaker/postdata";
 const postImg = origin+ "profilemaker/upload";

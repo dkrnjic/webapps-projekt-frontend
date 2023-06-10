@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "http://localhost:8080/"
+let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
