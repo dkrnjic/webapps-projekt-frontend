@@ -208,7 +208,7 @@ async function Auth(){//fetch POST
     })
     if (res.ok) {
         console.log("ima session");
-        window.location.href = "/home.html";
+        //window.location.href = "/home.html";
         return;
      }
      else{
@@ -247,8 +247,8 @@ async function Login(e){//fetch POST
     })
     if (res.ok) {
         //console.log(document.cookie.includes('user')); //jel ima cookie
-        console.log("logged in");
-        //window.location.href = "/home.html";
+        console.log("Ovdi redirecta");
+        window.location.href = "/home.html";
         return;
      }
     else{
