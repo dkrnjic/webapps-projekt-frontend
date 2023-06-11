@@ -24,12 +24,6 @@ async function CheckSession(){
         method: 'GET',
         credentials: 'include'     
     })
-    if (res.ok) {
-        console.log("Nema session");
-        window.location.href = "/login.html";
-        return;
-     }
-     else{
         if (res.ok) {
             const result = await res.json();
             if(result.admin){
@@ -53,9 +47,9 @@ async function CheckSession(){
             headerPanel.classList.toggle('active');
            }
         else{
-            console.log("nije mogao dobiti ime");
+            window.location.href = "/login.html";
         }
-    }
+
 }
  CheckSession();
 
