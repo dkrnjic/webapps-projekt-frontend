@@ -184,9 +184,9 @@ async function postInfo(e){
         //console.log("uspjesno si kreirao profil");
         if (res.redirected) {
             hiddenPanel.style.display = "block";
-            setTimeout(()=>window.location.href = res.url,1000);
+            setTimeout(()=>window.location.href = "/profilemaker.html");
             return;
-         }
+         }/* res.url,1000 */
          else{
             console.log("error na redirect");
          }
@@ -208,7 +208,7 @@ async function Auth(){//fetch POST
     if (res.redirected) {
         
         console.log("ima session");
-        window.location.href = res.url;
+        window.location.href = "/home.html";
         return;
      }
      else{
@@ -245,10 +245,10 @@ async function Login(e){//fetch POST
             password: form1[1].value
         })  
     })
-    if (res.redirected) {
+    if (res.ok) {
         //console.log(document.cookie.includes('user')); //jel ima cookie
         console.log("logged in");
-        window.location.href = res.url;
+        window.location.href = "/home.html";
         return;
      }
     else{
