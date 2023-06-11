@@ -182,13 +182,14 @@ async function postInfo(e){
     }
     else{
         //console.log("uspjesno si kreirao profil");
-        if (res.redirected) {
+        if (res.ok) {
             hiddenPanel.style.display = "block";
             setTimeout(()=>window.location.href = "/profilemaker.html");
             return;
          }/* res.url,1000 */
          else{
             console.log("error na redirect");
+            alert("error")
          }
     }
    
@@ -205,8 +206,7 @@ async function Auth(){//fetch POST
         method: 'GET',
         credentials: 'include'     
     })
-    if (res.redirected) {
-        
+    if (res.ok) {
         console.log("ima session");
         window.location.href = "/home.html";
         return;

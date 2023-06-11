@@ -71,31 +71,32 @@ async function CheckSession(){
       method: 'GET',
       credentials: 'include'     
   })
-  if (res.redirected) {
-      console.log("Nema session");
-      window.location.href = res.url;
-      return;
+  if (res.ok) {
+    if (res.ok) {
+      const result = await res.json();
+      for (var i = 0; i < username.length; i++) {
+          username[i].innerText=result.data.ime + " " + result.data.prezime;
+          submited = result.practice;
+          if(submited=="true"){
+            button.remove();
+            button2.remove();
+          }
+      }
+      avatar.src= root + result.data.avatar;
+      //LOADING TRIGGER
+      overlay.style.display = "none";
+      hidden.classList.toggle('active');
+      
+     }
+  else{
+      console.log("nije mogao dobiti ime");
+     }
+
    }
    else{
-      if (res.ok) {
-          const result = await res.json();
-          for (var i = 0; i < username.length; i++) {
-              username[i].innerText=result.data.ime + " " + result.data.prezime;
-              submited = result.practice;
-              if(submited=="true"){
-                button.remove();
-                button2.remove();
-              }
-          }
-          avatar.src= root + result.data.avatar;
-          //LOADING TRIGGER
-          overlay.style.display = "none";
-          hidden.classList.toggle('active');
-          
-         }
-      else{
-          console.log("nije mogao dobiti ime");
-      }
+    console.log("Nema session");
+    window.location.href = "/login.html";
+    return;
   }
 }
 CheckSession();
@@ -105,9 +106,9 @@ async function Logout(){//fetch POST
         method: 'POST',
         credentials: 'include'     
     })
-    if (res.redirected) {
+    if (res.ok) {
         console.log("logout");
-        window.location.href = res.url;
+        window.location.href = "/login.html";
         return;
      }
      else{

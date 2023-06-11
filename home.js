@@ -24,9 +24,9 @@ async function CheckSession(){
         method: 'GET',
         credentials: 'include'     
     })
-    if (res.redirected) {
+    if (res.ok) {
         console.log("Nema session");
-        window.location.href = res.url;
+        window.location.href = "/login.html";
         return;
      }
      else{
@@ -64,9 +64,9 @@ async function Logout(){//fetch POST
         method: 'POST',
         credentials: 'include'     
     })
-    if (res.redirected) {
+    if (res.ok) {
         console.log("logout");
-        window.location.href = res.url;
+        window.location.href = "/login.html";
         return;
      }
      else{

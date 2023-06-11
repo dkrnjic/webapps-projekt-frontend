@@ -38,9 +38,9 @@ async function Logout(){//fetch POST
       method: 'POST',
       credentials: 'include'     
   })
-  if (res.redirected) {
+  if (res.ok) {
       console.log("logout");
-      window.location.href = res.url;
+      window.location.href = "/login.html";
       return;
    }
    else{
@@ -53,12 +53,6 @@ async function CheckSession(){
       method: 'GET',
       credentials: 'include'     
   })
-  if (res.redirected) {
-      console.log("Nema session");
-      window.location.href = res.url;
-      return;
-   }
-   else{
       if (res.ok) {
           const result = await res.json();
           if(result.admin){
@@ -86,7 +80,6 @@ async function CheckSession(){
       else{
           console.log("nije mogao dobiti ime");
       }
-  }
 }
 
 CheckSession();
