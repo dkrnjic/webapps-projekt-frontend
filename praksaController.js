@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
@@ -41,9 +41,13 @@ let datumZavrsetka = document.getElementsByClassName('datumZavrsetka')[0];
 let statusText = document.getElementsByClassName('statusText')[0];
 
 async function Logout(){//fetch POST
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'home/logout',{
       method: 'POST',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+    },   
   })
   if (res.ok) {
       console.log("logout");
@@ -55,10 +59,14 @@ async function Logout(){//fetch POST
   }
 }
 
-async function CheckSession(){
+async function CheckToken(){
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'praksa/check',{
       method: 'GET',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+    },    
   })
     if (res.ok) {
           const result = await res.json();
@@ -111,7 +119,7 @@ async function CheckSession(){
   
 }
 
-CheckSession();
+CheckToken();
 
 /* kontaktPoduzeca.forEach((kontakt, index) => {
   console.log(kontakt.textContent);
@@ -122,9 +130,14 @@ let adresaPoduzeca = document.querySelectorAll(".adresaPoduzeca");
 let naslovPoduzeca = document.querySelectorAll(".naslovPoduzeca");
 
 async function getPrakse() {
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'praksa', {
     method: 'GET',
-    credentials: 'include'
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+  },   
+    
   });
 
   if (res.ok) {
@@ -139,13 +152,13 @@ async function getPrakse() {
         
         let clickBtn1 = document.getElementsByClassName('clickBtn1')[i]
         clickBtn1.addEventListener('click', async()=>{
-          console.log("rado");
+          const token = localStorage.getItem('token');
           const res = await fetch(origin + 'praksa/test',{
               method: 'POST',
-              credentials: 'include',
-              headers:{
-                  "Content-Type": 'application/json'
-              },
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+                },   
               body:JSON.stringify({
                 Naziv_poduzeca: praksa.Naziv_poduzeća
               })
@@ -169,9 +182,13 @@ getPrakse()
 
 let num =4;
 async function getPrakse2() {
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'praksa?start='+num, {
     method: 'GET',
-    credentials: 'include'
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+  },   
   });
 
   if (res.status == 200) {
@@ -260,12 +277,13 @@ async function getPrakse2() {
     odaberiA.textContent = 'Odaberi';
     odaberiA.classList.add('clickBtn1');
     odaberiA.addEventListener('click', async()=>{
+      const token = localStorage.getItem('token');
         const res = await fetch(origin+ 'praksa/test',{
             method: 'POST',
-            credentials: 'include',
-            headers:{
-                "Content-Type": 'application/json'
-            },
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + token
+             },   
             body:JSON.stringify({
               Naziv_poduzeca: nazivSpan.textContent
             })

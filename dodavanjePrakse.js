@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
@@ -50,11 +50,12 @@ kreirajBtn.addEventListener('click', () => {
   };
 
   // Send a POST request to the backend endpoint
+  const token = localStorage.getItem('token');
   fetch(origin+'praksa/add', {
     method: 'POST',
-    credentials: 'include',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
     },
     body: JSON.stringify(data)
   })
@@ -75,9 +76,13 @@ kreirajBtn.addEventListener('click', () => {
 
 
 async function Logout(){//fetch POST
+  const token = localStorage.getItem('token');
   const res = await fetch(origin + 'home/logout',{
       method: 'POST',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },  
   })
   if (res.ok) {
       console.log("logout");
@@ -89,10 +94,14 @@ async function Logout(){//fetch POST
   }
 }
 
-async function CheckSession(){
+async function CheckToken(){
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+'praksa/check',{
       method: 'GET',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },  
   })
 
       if (res.ok) {
@@ -117,4 +126,4 @@ async function CheckSession(){
 
 }
 
-CheckSession();
+CheckToken();

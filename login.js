@@ -7,14 +7,7 @@ let forma2= document.getElementsByClassName('forms')[1];
 let loginEnter= document.getElementsByClassName('form1')[1];
 let registerEnter= document.getElementsByClassName('form2')[2];
 let hiddenPanel = document.getElementsByClassName('hiddenElement')[0];
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
-/* let toggleBtn = document.getElementsByClassName('toggle-btn')[0]
-let toggleBtn2 = document.getElementsByClassName('toggle-btn')[1] */
-let target = "Student";
-
-/* 
-toggleBtn.addEventListener('click',()=>target=toggleBtn.value)
-toggleBtn2.addEventListener('click',()=>target=toggleBtn2.value) */
+let origin = "http://localhost:8080/"
 
 let email,password;
 let loginBtn= document.getElementsByClassName("my-button")[0];
@@ -49,33 +42,9 @@ loginEnter.addEventListener("keypress", function(event) {
     }
   }); 
 
-//toggleSwitch
-/* let btn = document.getElementById('btn');
-const toggleLeft = document.getElementsByClassName('toggle-btn')[0];
-const toggleRight = document.getElementsByClassName('toggle-btn')[1];
-
-toggleLeft.addEventListener('click' ,() => {
-    btn.style.left = '0';
-    toggleRight.style.color = '#333';  
-    toggleLeft.style.color = 'white';  
-    toggleLeft.style.transition ='.5s';
-    toggleRight.style.transition ='.5s';
-})
-
-toggleRight.addEventListener('click' ,() => {
-    btn.style.left = '120px';  
-    toggleLeft.style.color = '#333';  
-    toggleRight.style.color = 'white'; 
-    toggleLeft.style.transition ='.5s';
-    toggleRight.style.transition ='.5s';
-})
- */
-
-
 loginBtn.addEventListener("click", ()=>{
     email = document.getElementById("email").value;
     password = document.getElementById("password").value;
-    //console.log(email + " "+ password);
 });
 
 loginBtn.addEventListener("click", Login);
@@ -167,7 +136,6 @@ async function postInfo(e){
     //fetch POST
     const res = await fetch(postUrl,{
         method: 'POST',
-        credentials: 'include',
         headers:{
             "Content-Type": 'application/json'
         },
@@ -177,24 +145,23 @@ async function postInfo(e){
         })
     })
     console.log(res)
-    if(res.status == 500){
-        alert("taj email vec postoji u bazi")
-    }
-    else{
+   
         //console.log("uspjesno si kreirao profil");
         if (res.ok) {
             hiddenPanel.style.display = "block";
+            const data = await res.json();
+            const token = data.token; 
+            localStorage.setItem('token', token);
+            console.log("Token stored in localStorage:", token);
             setTimeout(()=>window.location.href = "/profilemaker.html");
             return;
-         }/* res.url,1000 */
+         }
          else{
             console.log("error na redirect");
             alert("error")
          }
-    }
-   
-   /*  const data = await res.json();
-    testH2.textContent = data.name; */
+  
+
 
 }
 
@@ -204,15 +171,14 @@ async function postInfo(e){
 async function Auth(){//fetch POST
     const res = await fetch(authUrl,{
         method: 'GET',
-        credentials: 'include'     
     })
     if (res.ok) {
-        console.log("ima session");
+        console.log("ima token");
         //window.location.href = "/home.html";
         return;
      }
      else{
-        console.log("nema session");
+        console.log("nema token");
     }
 }
 
@@ -236,18 +202,23 @@ async function Login(e){//fetch POST
         return
     } 
     const res = await fetch(loginUrl,{
-        method: 'POST',credentials: 'include',
+        method: 'POST',
         headers:{
             "Content-Type": 'application/json'
         },
         body:JSON.stringify({
             email: form1[0].value,
             password: form1[1].value
-        })  
+        }) ,
+        mode: 'cors',
     })
     if (res.ok) {
+        const data = await res.json();
+        const token = data.token; 
+        localStorage.setItem('token', token);
+        console.log("Token stored in localStorage:", token);
         //console.log(document.cookie.includes('user')); //jel ima cookie
-        console.log("Ovdi redirecta");
+        
         window.location.href = "/home.html";
         return;
      }
@@ -256,52 +227,3 @@ async function Login(e){//fetch POST
     }
 }
 
-    //test cookies
-    
-    function setCookie(){
-        fetch(origin+ 'cookies/setcookie', {
-            method: 'GET',
-            credentials: 'include'
-            })
-            .then(response => {
-                console.log(response);
-                //response.headers.get('Set-Cookie') will give you the set-cookie value
-            } )
-            .catch(error => console.error(error));
-
-            console.log("test");
-    }
-    function getCookie(){
-        fetch(origin+ 'cookies/getcookie', {
-            method: 'GET',
-            credentials: 'include'
-            })
-            .then(response => {
-                console.log(response);
-                //response.headers.get('Set-Cookie') will give you the set-cookie value
-            } )
-            .catch(error => console.error(error));
-    }
-
-    function clearCookie(){
-        fetch(origin+ 'cookies/clearcookie', {
-            method: 'GET',
-            credentials: 'include'
-            })
-            .then(response => {
-                console.log(response);
-                //response.headers.get('Set-Cookie') will give you the set-cookie value
-            } )
-            .catch(error => console.error(error));
-    }
-
-    function getlocalcookie(){
-        function getCookie(name) {
-            var value = "; " + document.cookie;
-            var parts = value.split("; " + name + "=");
-            if (parts.length == 2) return parts.pop().split(";").shift();
-            }
-        var myCookie = getCookie("myCookie");
-        console.log(myCookie);
-    }
-        

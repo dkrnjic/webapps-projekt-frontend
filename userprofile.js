@@ -1,7 +1,7 @@
 // Get the input field and the user profile panel
 const usernameInput = document.getElementById("username-input");
 const userProfilePanel = document.getElementById("user-profile-panel");
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 // Add an event listener to the input field to detect when the user presses the Enter key
 usernameInput.addEventListener("keydown", event => {
   if (event.key === "Enter") {

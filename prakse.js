@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
@@ -51,9 +51,13 @@ let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
 
 async function Logout(){//fetch POST
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'home/logout',{
       method: 'POST',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }, 
   })
   if (res.ok) {
       console.log("logout");
@@ -65,10 +69,14 @@ async function Logout(){//fetch POST
   }
 }
 
-async function CheckSession(){
+async function CheckToken(){
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'praksa/checkAdmin',{
       method: 'GET',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },    
   })
       if (res.ok) {
           const result = await res.json();
@@ -89,7 +97,7 @@ async function CheckSession(){
       }
  
 }
-CheckSession();
+CheckToken();
 
                                            /* EVENT LISTENERS */
 
@@ -108,9 +116,13 @@ buttonReject.addEventListener('click',RejectPractice)
 /* Dohvati prve 4 prakse */
 async function getPrakse() {
   try {
+    const token = localStorage.getItem('token');
     const res = await fetch(origin+ 'praksa/prakseAdmin', {
       method: 'GET',
-      credentials: 'include'
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }, 
     });
     if (res.ok) {
       const result = await res.json();
@@ -128,13 +140,14 @@ getPrakse()
 /* Reject practice */
 async function RejectPractice() {
   try {
+    const token = localStorage.getItem('token');
     let commentText = document.getElementsByClassName('commentText')[0];
     const res = await fetch(origin+ 'praksa/reject', {
       method: 'POST',
-      credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
-      },
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }, 
       body: JSON.stringify({
         comment:commentText.value,
         id:uid.textContent
@@ -157,13 +170,14 @@ async function RejectPractice() {
 /* Accept practice */
 async function AcceptPractice() {
   try {
+    const token = localStorage.getItem('token');
     let commentText = document.getElementsByClassName('commentText')[0];
     const res = await fetch(origin+ 'praksa/accept', {
       method: 'POST',
-      credentials: 'include',
       headers: {
-        'Content-Type': 'application/json'
-      },
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }, 
       body: JSON.stringify({
         comment:commentText.value,
         id:uid.textContent
@@ -185,9 +199,13 @@ async function AcceptPractice() {
 /* Ocitaj sljedece cetiri prakse sa buttonom */
 let num =4;
 async function getPrakse2() {
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'praksa/prakseAdmin?start='+num, {
     method: 'GET',
-    credentials: 'include'
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    }, 
   });
 
   if (res.status == 200) {

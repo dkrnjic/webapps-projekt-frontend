@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
@@ -66,10 +66,15 @@ else {
   };
 }
 
-async function CheckSession(){
+async function CheckToken(){
+  const token = localStorage.getItem('token');
   const res = await fetch(origin + 'practice/check',{
       method: 'GET',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+    }, 
+
   })
   if (res.ok) {
     if (res.ok) {
@@ -99,12 +104,16 @@ async function CheckSession(){
     return;
   }
 }
-CheckSession();
+CheckToken();
 
 async function Logout(){//fetch POST
+  const token = localStorage.getItem('token');
     const res = await fetch(origin+ 'home/logout',{
         method: 'POST',
-        credentials: 'include'     
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+      },    
     })
     if (res.ok) {
         console.log("logout");
@@ -152,13 +161,13 @@ button.addEventListener("click", ()=>{
   let test = 2;
   //  post request na server
   
-
+const token = localStorage.getItem('token');
 fetch(origin+ 'practice', {
   method: 'POST',
-  credentials: 'include',
   headers: {
-    'Content-Type': 'application/json'
-  },
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + token
+},    
   body: JSON.stringify({
        day: numOfDays,
        title:naslovInput.value,
@@ -180,16 +189,17 @@ fetch(origin+ 'practice', {
 })
 
 panelYes.addEventListener('click', () => {
+    const token = localStorage.getItem('token');
     panel.style.display = 'none';
     overlay2.style.display = 'none';
     button.setAttribute("disabled", "disabled");
     button2.setAttribute("disabled", "disabled");
     fetch(origin+ 'practice/predaj', {
         method: 'POST',
-        credentials: 'include',
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+      },   
       })
       .then(response => {
         if (!response.ok) {
@@ -239,9 +249,13 @@ dan.addEventListener('click', () => {
 
 
 async function getTextarea(day){
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'practice/'+day,{
       method: 'GET',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+    },       
   })
   if (res.ok) {
       const result = await res.json();

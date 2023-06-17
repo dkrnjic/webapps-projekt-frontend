@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 let toggleContainer = document.getElementsByClassName('toggleContainer')[0];
 let testMenu = document.getElementsByClassName('testMenu')[0];
 
@@ -34,9 +34,13 @@ let  hidden= document.getElementsByClassName("hiddenContent")[0];
   
 
 async function Logout(){//fetch POST
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'home/logout',{
       method: 'POST',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },  
   })
   if (res.ok) {
       console.log("logout");
@@ -48,10 +52,14 @@ async function Logout(){//fetch POST
   }
 }
 
-async function CheckSession(){
+async function CheckToken(){
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+'praksa/check',{
       method: 'GET',
-      credentials: 'include'     
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },     
   })
       if (res.ok) {
           const result = await res.json();
@@ -82,11 +90,15 @@ async function CheckSession(){
       }
 }
 
-CheckSession();
+CheckToken();
 
 async function getKorisnici() {
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'users/getUsers', {
-    credentials: 'include'
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },  
   });
   if (res.ok) {
     const result = await res.json();
@@ -107,10 +119,14 @@ async function getKorisnici() {
 
         let clickBtn1 = document.getElementsByClassName('clickBtn1')[i]
         clickBtn1.addEventListener('click', async()=>{
+          const token = localStorage.getItem('token');
           profileContainerFixed.style.display = "block"
           const res = await fetch(origin+ 'users/userprofile/'+korisnik._id,{
               method: 'GET',
-              credentials: 'include'
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+              },  
             })
             if (res.ok) {
               const result = await res.json();
@@ -162,9 +178,13 @@ closeProfileInfo.addEventListener('click',()=>{
 
 let num =4;
 async function getKorisnici2() {
+  const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'users/getUsers?start='+num, {
     method: 'GET',
-    credentials: 'include'
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },  
   });
 
   if (res.status == 200) {
@@ -218,9 +238,13 @@ async function getKorisnici2() {
     odaberiA.addEventListener('click', async()=>{
       profileContainerFixed.style.display = "block"
       /* console.log(result[0]._id); */
+      const token = localStorage.getItem('token');
       const res = await fetch(origin + 'users/userprofile/'+result[i]._id,{
           method: 'GET',
-          credentials: 'include'
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },  
         })
         if (res.ok) {
           const result2 = await res.json();

@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-let origin = "https://webapps-projekt-backend-dkrnjic.onrender.com/"
+let origin = "http://localhost:8080/"
 //let toggleButton = document.getElementsByClassName('toggle-button')[0];
 //let navbarLinks = document.getElementsByClassName('nav-links')[0];
 let root = origin+ "img/";
@@ -19,13 +19,18 @@ let  headerPanel= document.getElementsByClassName("headerContainer")[0];
 
 logoutBtn.addEventListener("click", Logout);
 
-async function CheckSession(){
+async function CheckToken(){
+    const token = localStorage.getItem('token');
     const res = await fetch(origin+ 'home/check',{
         method: 'GET',
-        credentials: 'include'     
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        }, 
     })
         if (res.ok) {
             const result = await res.json();
+            console.log(result);
             if(result.admin){
                 let subUser = document.getElementsByClassName("subUser")[0];
                 subUser.remove();
@@ -47,19 +52,24 @@ async function CheckSession(){
             headerPanel.classList.toggle('active');
            }
         else{
-            window.location.href = "/login.html";
+            //window.location.href = "/login.html";
         }
 
 }
- CheckSession();
+ CheckToken();
 
-async function Logout(){//fetch POST
+async function Logout(){
+    const token = localStorage.getItem('token');
     const res = await fetch(origin+ 'home/logout',{
         method: 'POST',
-        credentials: 'include'     
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+        },   
     })
     if (res.ok) {
-        console.log("logout");
+        localStorage.removeItem('token');
+        console.log("Token removed from localStorage");
         window.location.href = "/login.html";
         return;
      }
