@@ -40,24 +40,27 @@ let datumPocetka = document.getElementsByClassName('datumPocetka')[0];
 let datumZavrsetka = document.getElementsByClassName('datumZavrsetka')[0];
 let statusText = document.getElementsByClassName('statusText')[0];
 
-async function Logout(){//fetch POST
+
+async function Logout() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'home/logout',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-    },   
-  })
+  const res = await fetch(origin + 'home/logout', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+  });
+
   if (res.ok) {
-      console.log("logout");
-      window.location.href = "/login.html";
-      return;
-   }
-   else{
-      alert("neki bug")
+    localStorage.removeItem('token');
+    console.log("Token removed from localStorage");
+    window.location.href = "/login.html";
+    return;
+  } else {
+    alert("Some error occurred");
   }
 }
+
 
 async function CheckToken(){
   const token = localStorage.getItem('token');
@@ -131,7 +134,7 @@ let naslovPoduzeca = document.querySelectorAll(".naslovPoduzeca");
 
 async function getPrakse() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'praksa', {
+  const res = await fetch(origin+ 'practice/list', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -153,8 +156,8 @@ async function getPrakse() {
         let clickBtn1 = document.getElementsByClassName('clickBtn1')[i]
         clickBtn1.addEventListener('click', async()=>{
           const token = localStorage.getItem('token');
-          const res = await fetch(origin + 'praksa/test',{
-              method: 'POST',
+          const res = await fetch(origin + 'practice/choose',{
+              method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
@@ -183,7 +186,7 @@ getPrakse()
 let num =4;
 async function getPrakse2() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'praksa?start='+num, {
+  const res = await fetch(origin+ 'practice/list?start='+num, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -278,8 +281,8 @@ async function getPrakse2() {
     odaberiA.classList.add('clickBtn1');
     odaberiA.addEventListener('click', async()=>{
       const token = localStorage.getItem('token');
-        const res = await fetch(origin+ 'praksa/test',{
-            method: 'POST',
+        const res = await fetch(origin+ 'practice/choose',{
+            method: 'PUT',
             headers: {
               'Content-Type': 'application/json',
               'Authorization': 'Bearer ' + token

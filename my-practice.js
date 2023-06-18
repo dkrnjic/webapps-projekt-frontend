@@ -68,7 +68,7 @@ else {
 
 async function CheckToken(){
   const token = localStorage.getItem('token');
-  const res = await fetch(origin + 'practice/check',{
+  const res = await fetch(origin + 'practice/',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -106,24 +106,27 @@ async function CheckToken(){
 }
 CheckToken();
 
-async function Logout(){//fetch POST
+
+async function Logout() {
   const token = localStorage.getItem('token');
-    const res = await fetch(origin+ 'home/logout',{
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + token
-      },    
-    })
-    if (res.ok) {
-        console.log("logout");
-        window.location.href = "/login.html";
-        return;
-     }
-     else{
-        alert("neki bug")
-    }
+  const res = await fetch(origin + 'home/logout', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+  });
+
+  if (res.ok) {
+    localStorage.removeItem('token');
+    console.log("Token removed from localStorage");
+    window.location.href = "/login.html";
+    return;
+  } else {
+    alert("Some error occurred");
+  }
 }
+
 
 
 function init () {
@@ -163,7 +166,7 @@ button.addEventListener("click", ()=>{
   
 const token = localStorage.getItem('token');
 fetch(origin+ 'practice', {
-  method: 'POST',
+  method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + token
@@ -195,7 +198,7 @@ panelYes.addEventListener('click', () => {
     button.setAttribute("disabled", "disabled");
     button2.setAttribute("disabled", "disabled");
     fetch(origin+ 'practice/predaj', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token

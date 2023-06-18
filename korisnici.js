@@ -33,24 +33,27 @@ let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
   
 
-async function Logout(){//fetch POST
+
+async function Logout() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'home/logout',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },  
-  })
+  const res = await fetch(origin + 'home/logout', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+  });
+
   if (res.ok) {
-      console.log("logout");
-      window.location.href = "/login.html";
-      return;
-   }
-   else{
-      alert("neki bug")
+    localStorage.removeItem('token');
+    console.log("Token removed from localStorage");
+    window.location.href = "/login.html";
+    return;
+  } else {
+    alert("Some error occurred");
   }
 }
+
 
 async function CheckToken(){
   const token = localStorage.getItem('token');
@@ -94,7 +97,7 @@ CheckToken();
 
 async function getKorisnici() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'users/getUsers', {
+  const res = await fetch(origin+ 'users/', {
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
@@ -121,7 +124,7 @@ async function getKorisnici() {
         clickBtn1.addEventListener('click', async()=>{
           const token = localStorage.getItem('token');
           profileContainerFixed.style.display = "block"
-          const res = await fetch(origin+ 'users/userprofile/'+korisnik._id,{
+          const res = await fetch(origin+ 'users/'+korisnik._id,{
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -179,7 +182,7 @@ closeProfileInfo.addEventListener('click',()=>{
 let num =4;
 async function getKorisnici2() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'users/getUsers?start='+num, {
+  const res = await fetch(origin+ 'users/?start='+num, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -239,7 +242,7 @@ async function getKorisnici2() {
       profileContainerFixed.style.display = "block"
       /* console.log(result[0]._id); */
       const token = localStorage.getItem('token');
-      const res = await fetch(origin + 'users/userprofile/'+result[i]._id,{
+      const res = await fetch(origin + 'users/'+result[i]._id,{
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

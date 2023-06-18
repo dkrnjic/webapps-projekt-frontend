@@ -58,25 +58,27 @@ async function CheckToken(){
 }
  CheckToken();
 
-async function Logout(){
+ async function Logout() {
     const token = localStorage.getItem('token');
-    const res = await fetch(origin+ 'home/logout',{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-        },   
-    })
+    const res = await fetch(origin + 'home/logout', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+    });
+  
     if (res.ok) {
-        localStorage.removeItem('token');
-        console.log("Token removed from localStorage");
-        window.location.href = "/login.html";
-        return;
-     }
-     else{
-        alert("neki bug")
+      
+      localStorage.removeItem('token');
+      console.log("Token removed from localStorage");
+      window.location.href = "/login.html";
+      return;
+    } else {
+      alert("Some error occurred");
     }
-}
+  }
+
 
 
 // Toggle of humburger menu

@@ -50,28 +50,31 @@ let textareaTextArray = [{title:"",content:""},
 let overlay = document.getElementsByClassName("overlay")[0];
 let  hidden= document.getElementsByClassName("hiddenContent")[0];
 
-async function Logout(){//fetch POST
+
+async function Logout() {
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'home/logout',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      }, 
-  })
+  const res = await fetch(origin + 'home/logout', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token
+    },
+  });
+
   if (res.ok) {
-      console.log("logout");
-      window.location.href ="/login.html";
-      return;
-   }
-   else{
-      alert("neki bug")
+    localStorage.removeItem('token');
+    console.log("Token removed from localStorage");
+    window.location.href = "/login.html";
+    return;
+  } else {
+    alert("Some error occurred");
   }
 }
 
+
 async function CheckToken(){
   const token = localStorage.getItem('token');
-  const res = await fetch(origin+ 'praksa/checkAdmin',{
+  const res = await fetch(origin+ 'praksa/check',{
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -117,7 +120,7 @@ buttonReject.addEventListener('click',RejectPractice)
 async function getPrakse() {
   try {
     const token = localStorage.getItem('token');
-    const res = await fetch(origin+ 'praksa/prakseAdmin', {
+    const res = await fetch(origin+ 'praksa/', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -143,7 +146,7 @@ async function RejectPractice() {
     const token = localStorage.getItem('token');
     let commentText = document.getElementsByClassName('commentText')[0];
     const res = await fetch(origin+ 'praksa/reject', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
@@ -173,7 +176,7 @@ async function AcceptPractice() {
     const token = localStorage.getItem('token');
     let commentText = document.getElementsByClassName('commentText')[0];
     const res = await fetch(origin+ 'praksa/accept', {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
@@ -198,7 +201,7 @@ async function AcceptPractice() {
 
 /* Ocitaj sljedece cetiri prakse sa buttonom */
 let num =4;
-async function getPrakse2() {
+/* async function getPrakse2() {
   const token = localStorage.getItem('token');
   const res = await fetch(origin+ 'praksa/prakseAdmin?start='+num, {
     method: 'GET',
@@ -215,7 +218,7 @@ async function getPrakse2() {
      console.log("nema podataka vise");
   }
   num+=4;
-}
+} */
 
 
 /* load next page  */

@@ -1,7 +1,7 @@
 const origin = "http://localhost:8080/";
 
-const postData = origin + "profilemaker/postdata";
-const postImg = origin + "profilemaker/upload";
+const postData = origin + "profilemaker/userProfile";
+const postImg = origin + "profilemaker/profilePicture/upload";
 const root = origin + "img/";
 let changedImg = false;
 
@@ -142,7 +142,7 @@ async function Post(e) {
   try {
     const token = localStorage.getItem('token');
     const res = await fetch(postImg, {
-      method: 'POST',
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
@@ -151,7 +151,7 @@ async function Post(e) {
       mode: 'cors',
     });
   
-    console.log(res); // Add this line to inspect the response
+    console.log(res); 
   
     if (!res.ok) {
       throw new Error(res.statusText);
@@ -162,10 +162,10 @@ async function Post(e) {
     console.log("No new image");
   }
 
-  /* console.log(data.avatar); */
+  
   const token = localStorage.getItem('token');
   const res = await fetch(postData, {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + token
